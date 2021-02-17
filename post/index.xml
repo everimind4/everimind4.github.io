@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Welcome to my Blog</title>
-    <link>https://everimind4.github.io/post/</link>
-    <description>Recent content in Posts on Welcome to my Blog</description>
+    <title>Posts on Alan&#39;s Laboratory</title>
+    <link>https://example.com/post/</link>
+    <description>Recent content in Posts on Alan&#39;s Laboratory</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Wed, 17 Feb 2021 15:00:55 +0900</lastBuildDate><atom:link href="https://everimind4.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <lastBuildDate>Wed, 17 Feb 2021 15:00:55 +0900</lastBuildDate><atom:link href="https://example.com/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Test1</title>
-      <link>https://everimind4.github.io/post/test1/</link>
+      <link>https://example.com/post/test1/</link>
       <pubDate>Wed, 17 Feb 2021 15:00:55 +0900</pubDate>
       
-      <guid>https://everimind4.github.io/post/test1/</guid>
+      <guid>https://example.com/post/test1/</guid>
       <description></description>
     </item>
     
