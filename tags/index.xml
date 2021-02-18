@@ -2,9 +2,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Alan&#39;s Laboratory</title>
-    <link>https://example.com/tags/</link>
+    <link>https://everimind4.github.io/tags/</link>
     <description>Recent content in Tags on Alan&#39;s Laboratory</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language><atom:link href="https://example.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language><atom:link href="https://everimind4.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
