@@ -3,28 +3,18 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://everimind4.github.io/about/</loc>
+    <lastmod>2020-10-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://everimind4.github.io/</loc>
-    <lastmod>2021-02-18T15:09:44+09:00</lastmod>
+    <lastmod>2021-02-17T15:00:55+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://everimind4.github.io/page/</loc>
-    <lastmod>2021-02-18T15:09:44+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://everimind4.github.io/search/</loc>
-    <lastmod>2021-02-18T15:09:44+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://everimind4.github.io/archives/</loc>
-    <lastmod>2021-02-18T15:07:44+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://everimind4.github.io/about/</loc>
-    <lastmod>2021-02-18T14:48:14+09:00</lastmod>
+    <lastmod>2020-10-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -38,7 +28,16 @@
   </url>
   
   <url>
+    <loc>https://everimind4.github.io/archives/</loc>
+    <lastmod>2019-05-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://everimind4.github.io/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>https://everimind4.github.io/search/</loc>
   </url>
   
   <url>
