@@ -1,1 +1,3 @@
 User-agent: *
+Allow: /
+Sitemap: https://everimind4.github.io/everimind4
