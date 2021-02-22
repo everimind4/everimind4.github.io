@@ -6,14 +6,17 @@
     <description>Recent content in Posts on Alan Choi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 17 Feb 2021 15:00:55 +0900</lastBuildDate><atom:link href="https://everimind4.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 20 Feb 2021 15:00:55 +0900</lastBuildDate><atom:link href="https://everimind4.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Test1</title>
-      <link>https://everimind4.github.io/p/test1/</link>
-      <pubDate>Wed, 17 Feb 2021 15:00:55 +0900</pubDate>
+      <title>휴고(Hugo)로 Github 블로그 만들기 (1)</title>
+      <link>https://everimind4.github.io/p/%ED%9C%B4%EA%B3%A0hugo%EB%A1%9C-github-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0-1/</link>
+      <pubDate>Sat, 20 Feb 2021 15:00:55 +0900</pubDate>
       
-      <guid>https://everimind4.github.io/p/test1/</guid>
-      <description></description>
+      <guid>https://everimind4.github.io/p/%ED%9C%B4%EA%B3%A0hugo%EB%A1%9C-github-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0-1/</guid>
+      <description>1. Github 블로그  &amp;quot; 개발자라면 Github 블로그 하나 정도는 있어야지! &amp;quot;
+ 라는 말을 어디선가 주워듣고 Github로 블로그를 만들어보자, 결심하게 되었다.
+그런데 생각보다 진입장벽이 낮지는 않았고, 익숙해지는 데 생각보다 시간이 걸린 데다 시행착오도 제법 겪으며 결국 어찌저찌 성공은 하였다(그 결과물을 지금 보고 계십니다).
+그래서 관련 내용을 정리해서 포스팅하면 Hugo로 블로그를 만들어 Github로 호스팅하고자 하는 사람들이 조금이나마 도움을 받을 수 있을 듯 하여, 첫 포스팅 주제는 블로그를 만드는 방법으로 결정!</description>
     </item>
     
   </channel>
