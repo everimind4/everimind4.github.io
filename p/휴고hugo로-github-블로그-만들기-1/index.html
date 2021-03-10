@@ -229,10 +229,6 @@ if (!doNotTrack) {
 <p>라는 말을 어디선가 주워듣고 Github로 블로그를 만들어보자, 결심하게 되었다.</p>
 <p>그런데 생각보다 진입장벽이 낮지는 않았고, 익숙해지는 데 생각보다 시간이 걸린 데다 시행착오도 제법 겪으며 결국 어찌저찌 성공은 하였다(그 결과물을 지금 보고 계십니다).</p>
 <p>그래서 관련 내용을 정리해서 포스팅하면 Hugo로 블로그를 만들어 Github로 호스팅하고자 하는 사람들이 조금이나마 도움을 받을 수 있을 듯 하여, 첫 포스팅 주제는 블로그를 만드는 방법으로 결정!</p>
-<ul>
-<li>블로그 제작 과정 전반에 <a class="link" href="https://github.com/Integerous/Integerous.github.io"  target="_blank" rel="noopener"
-    >이 글</a>의 도움을 많이 받았습니다.</li>
-</ul>
 <h3 id="2-준비물">2. 준비물</h3>
 <p>각 항목 클릭 시 해당 설치 파일을 받을 수 있는 웹사이트로 링크 (OS에 맞는 최신 버전을 다운로드)</p>
 <ul>
@@ -272,7 +268,7 @@ if (!doNotTrack) {
 <li>
 <p>Git Bash 실행 후 <strong>C:\Hugo</strong> 위치에서 <code>$ hugo new site blog</code> 명령으로 로컬 컨텐츠 디렉토리 생성</p>
 <ul>
-<li><strong>C:\Hugo\blog</strong>에서 dir (or ls)로 디렉토리 구조를 확인 가능</li>
+<li><strong>C:\Hugo\blog</strong>에서 <code>dir</code> 명령으로 디렉토리 구조를 확인 가능</li>
 <li>이후, Git Bash 속성에서 시작 위치를 <strong>C:\Hugo\blog</strong>로 설정하면 작업이 편해집니다!</li>
 </ul>
 </li>
@@ -304,8 +300,8 @@ if (!doNotTrack) {
 </ul>
 <h4 id="36-컨텐츠-생성">3.6. 컨텐츠 생성</h4>
 <ul>
-<li><code>$ hugo new post/test.md</code> 명령 실행하면 <code>blog\content\post\</code> 위치에 <code>test.md</code> 파일이 생성됨</li>
-<li>Typora 등의 Markdown Editor를 사용하여 md 파일 내용 작성 (다음 글에 작성 예정)</li>
+<li><code>$ hugo new post/test.md</code> 명령을 실행하면 <code>blog\content\post\</code> 위치에 <code>test.md</code> 파일이 생성됨</li>
+<li><strong>Typora</strong> 등의 Markdown Editor를 사용하여 md 파일 내용 작성 (자세한 방법을 다음 글에서 다룸)</li>
 <li><code>$ hugo server</code> 또는 <code>hugo server -D</code> 명령어로 웹서버 실행
 <ul>
 <li><code>http://localhost:1313/</code>에 접속해서 확인</li>
@@ -325,15 +321,32 @@ if (!doNotTrack) {
 <li><code>$ git push origin main</code> everimind4.github.io에 커밋 내용 Push</li>
 <li><code>blog</code> 저장소에도 변경 내용 Push
 <ul>
-<li><code>$ cd ..</code>  public의 한 단계 상위 디렉토리로 이동</li>
+<li><code>$ cd ..</code>  public의 한 단계 상위 디렉토리인 blog로 이동</li>
 <li><code>$ git add .</code></li>
 <li><code>$ git commit -m &quot;(description)&quot;</code></li>
 <li><code>$ git push origin main</code></li>
 </ul>
 </li>
 </ul>
-<p>여기까지 따라왔다면 블로그에 글을 작성하고 빌드하는 방법은 모두 배우셨습니다.</p>
-<p>다음 글에서는 <code>config.toml</code> 파일의 세부 내용을 수정하는 방법과, 마크다운 에디터인 <strong>Typora</strong>를 사용해 글을 어떻게 짜임새 있게 작성하는가에 대해 다룰 예정입니다!</p>
+<h3 id="4-마무리하며">4. 마무리하며</h3>
+<p>여기까지 따라왔다면 블로그에 글을 작성하고 빌드하여 블로그의 기초를 다지는 방법은 모두 배우셨습니다.</p>
+<p>이어지는 글들을 통해 아래 내용들을 다룰 예정입니다.</p>
+<ul>
+<li>블로그 세부 설정
+<ul>
+<li><code>config.toml</code> 파일의 세부 내용을 수정하기</li>
+<li><strong>Disquss</strong> 등의 댓글 위젯 추가하기</li>
+<li><strong>Google Analytics</strong> 연동하기</li>
+<li><code>sitemap.xml</code>을 추가해 검색 엔진에 노출시키기</li>
+</ul>
+</li>
+<li>마크다운 에디터 <strong>Typora</strong>를 사용해 글쓰기
+<ul>
+<li>글 작성 Tips</li>
+<li>기본적인 문법 및 단축키</li>
+</ul>
+</li>
+</ul>
 
 </section>
 
