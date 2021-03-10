@@ -6,10 +6,10 @@
         <description>Recent content on Alan Choi</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Sat, 20 Feb 2021 15:00:55 +0900</lastBuildDate><atom:link href="https://everimind4.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 20 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://everimind4.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>휴고(Hugo)로 Github 블로그 만들기 (1)</title>
         <link>https://everimind4.github.io/p/%ED%9C%B4%EA%B3%A0hugo%EB%A1%9C-github-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0-1/</link>
-        <pubDate>Sat, 20 Feb 2021 15:00:55 +0900</pubDate>
+        <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
         
         <guid>https://everimind4.github.io/p/%ED%9C%B4%EA%B3%A0hugo%EB%A1%9C-github-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0-1/</guid>
         <description>&lt;h3 id=&#34;1-github-블로그&#34;&gt;1. Github 블로그&lt;/h3&gt;
@@ -19,46 +19,111 @@
 &lt;p&gt;라는 말을 어디선가 주워듣고 Github로 블로그를 만들어보자, 결심하게 되었다.&lt;/p&gt;
 &lt;p&gt;그런데 생각보다 진입장벽이 낮지는 않았고, 익숙해지는 데 생각보다 시간이 걸린 데다 시행착오도 제법 겪으며 결국 어찌저찌 성공은 하였다(그 결과물을 지금 보고 계십니다).&lt;/p&gt;
 &lt;p&gt;그래서 관련 내용을 정리해서 포스팅하면 Hugo로 블로그를 만들어 Github로 호스팅하고자 하는 사람들이 조금이나마 도움을 받을 수 있을 듯 하여, 첫 포스팅 주제는 블로그를 만드는 방법으로 결정!&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;블로그 제작 과정 전반에 &lt;a class=&#34;link&#34; href=&#34;https://github.com/Integerous/Integerous.github.io&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;이 글&lt;/a&gt;의 도움을 많이 받았습니다.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3 id=&#34;2-준비물&#34;&gt;2. 준비물&lt;/h3&gt;
-&lt;p&gt;Windows 10 기준입니다.&lt;/p&gt;
+&lt;p&gt;각 항목 클릭 시 해당 설치 파일을 받을 수 있는 웹사이트로 링크 (OS에 맞는 최신 버전을 다운로드)&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://git-scm.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Git&lt;/a&gt; : OS에 맞는 최신 버전 다운로드&lt;/li&gt;
+    &gt;Git&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/gohugoio/hugo/releases&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Hugo&lt;/a&gt; : OS에 맞는 최신 버전 (zip) 다운로드
+    &gt;Hugo&lt;/a&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://themes.gohugo.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Hugo theme&lt;/a&gt; : 마음에 드는 테마를 하나 고르기&lt;/li&gt;
+    &gt;Hugo theme&lt;/a&gt; (마음에 드는 테마 하나 선택)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://typora.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Typora&lt;/a&gt; : 글을 편하게 쓰기 위한 에디터 프로그램&lt;/li&gt;
+    &gt;Typora&lt;/a&gt; (Markdown 에디터)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;3-만들어보기&#34;&gt;3. 만들어보기&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;Git 설치 (Hugo blog만 사용하고자 하는 경우 설치 옵션 그대로 유지)&lt;/p&gt;
+&lt;h3 id=&#34;3-설치하기&#34;&gt;3. 설치하기&lt;/h3&gt;
+&lt;h4 id=&#34;31-git-설치&#34;&gt;3.1. Git 설치&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;cmd 창을 열어 &lt;code&gt;git version&lt;/code&gt;를 입력하여 잘 설치되었는지 확인&lt;/li&gt;
+&lt;li&gt;Hugo blog만 사용하고자 하는 경우 설치 옵션 그대로 유지&lt;/li&gt;
+&lt;li&gt;명령 프롬프트에 &lt;code&gt;git version&lt;/code&gt;를 입력하여 잘 설치되었는지 확인&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h4 id=&#34;32-github-repository-2개-만들기&#34;&gt;3.2. Github Repository &lt;strong&gt;2개&lt;/strong&gt; 만들기&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&#39;(Username).github.io&#39;&lt;/strong&gt; : 빌드 결과인 블로그 HTML 파일을 저장하는 Public Repository, &lt;strong&gt;이름 양식 필히 준수&lt;/strong&gt; (&lt;code&gt;everimind4.github.io&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;Hugo blog 전체 파일을 관리하는 Private Repository, 이름 자유롭게 설정 (필자의 경우 &lt;code&gt;blog&lt;/code&gt;로 설정)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;33-로컬-디렉토리-생성-및-구성&#34;&gt;3.3. 로컬 디렉토리 생성 및 구성&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;C:\Hugo\bin&lt;/strong&gt; 디렉토리 생성 후 다운로드한 Hugo Zip 파일 압축 해제&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Github Repository를 &lt;strong&gt;2개&lt;/strong&gt; 생성합니다.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;&#39;(Username).github.io&#39;&lt;/strong&gt; : 블로그 HTML 파일을 관리하는 Public Repository, 이름 양식 필히 준수&lt;/li&gt;
-&lt;li&gt;Hugo blog 전체 파일을 관리하는 Private Repository, 이름 자유롭게 설정 (필자의 경우 myBlog로 하였음)&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;Windows + Q ▶ 시스템 환경 변수 편집 ▶ &lt;strong&gt;PATH&lt;/strong&gt;에 &lt;strong&gt;C:\Hugo\bin&lt;/strong&gt; 추가&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;(원하는 위치)\Hugo\bin&lt;/strong&gt; 디렉토리 생성 후 다운로드한 Hugo Zip 파일을 압축 해제한다.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;Git Bash 실행 후 &lt;strong&gt;C:\Hugo&lt;/strong&gt; 위치에서 &lt;code&gt;$ hugo new site blog&lt;/code&gt; 명령으로 로컬 컨텐츠 디렉토리 생성&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Windows + Q ▶ 시스템 환경 변수 편집 ▶ &lt;strong&gt;PATH&lt;/strong&gt;에 해당 디렉토리 추가&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;C:\Hugo\blog&lt;/strong&gt;에서 dir (or ls)로 디렉토리 구조를 확인 가능&lt;/li&gt;
+&lt;li&gt;이후, Git Bash 속성에서 시작 위치를 &lt;strong&gt;C:\Hugo\blog&lt;/strong&gt;로 설정하면 작업이 편해집니다!&lt;/li&gt;
 &lt;/ul&gt;
-&lt;ol start=&#34;4&#34;&gt;
-&lt;li&gt;(작성중)&lt;/li&gt;
-&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;34-테마-다운로드-및-설정&#34;&gt;3.4. 테마 다운로드 및 설정&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;2번에서 고른 테마의 github 저장소 주소를 복사&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;~\blog&lt;/strong&gt; 경로에서 &lt;code&gt;$ git init&lt;/code&gt; 명령 실행 후 &lt;code&gt;$ git submodule add (복사한 주소) themes\(테마 이름)&lt;/code&gt; 명령으로 테마를 submodule로 추가&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;config.toml&lt;/code&gt; 파일의 내용을 각 테마 Github 페이지의 예시 파일을 보면서 수정
+&lt;ul&gt;
+&lt;li&gt;toml이 아닌 yml/yaml 파일만 존재하는 경우 YAML to TOML converter 등을 사용&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;35-github-원격-저장소와-로컬-디렉토리-연결&#34;&gt;3.5. Github 원격 저장소와 로컬 디렉토리 연결&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Github에 만든 &lt;code&gt;blog&lt;/code&gt; 저장소(본인이 설정한 이름)와 &lt;strong&gt;C:\Hugo\blog&lt;/strong&gt; 디렉토리 연결
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;C:\Hugo\blog&lt;/strong&gt;로 이동&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ git init&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ git remote add origin https://github.com/everimind4/blog.git public&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;everimind4.github.io&lt;/code&gt; 저장소를 &lt;code&gt;blog&lt;/code&gt;의 submodule로 등록
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;$ git submodule add -b main https://github.com/everimind4/everimind4.github.io.git public&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;36-컨텐츠-생성&#34;&gt;3.6. 컨텐츠 생성&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;$ hugo new post/test.md&lt;/code&gt; 명령 실행하면 &lt;code&gt;blog\content\post\&lt;/code&gt; 위치에 &lt;code&gt;test.md&lt;/code&gt; 파일이 생성됨&lt;/li&gt;
+&lt;li&gt;Typora 등의 Markdown Editor를 사용하여 md 파일 내용 작성 (다음 글에 작성 예정)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ hugo server&lt;/code&gt; 또는 &lt;code&gt;hugo server -D&lt;/code&gt; 명령어로 웹서버 실행
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;http://localhost:1313/&lt;/code&gt;에 접속해서 확인&lt;/li&gt;
+&lt;li&gt;md 파일의 Draft 옵션이 true로 설정된 경우 빌드에서 제외됨&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-D&lt;/code&gt; 옵션은 md파일의 Draft 문서들도 확인 가능한 옵션 (다른 옵션은 &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/commands/hugo_server/#options&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;여기&lt;/a&gt;서 확인)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;37-컨텐츠-업로드&#34;&gt;3.7. 컨텐츠 업로드&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;C:\Hugo\blog&lt;/strong&gt;로 이동&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ hugo -t (테마이름)&lt;/code&gt; 명령으로 테마가 적용된 블로그 내용을 &lt;strong&gt;~\public&lt;/strong&gt;에 생성&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ cd public&lt;/code&gt; public 디렉토리로 이동&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ git add .&lt;/code&gt; 수정된 파일 내역 저장&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ git commit -m &amp;quot;(description)&amp;quot;&lt;/code&gt; 변경 내용 commit&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ git push origin main&lt;/code&gt; everimind4.github.io에 커밋 내용 Push&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;blog&lt;/code&gt; 저장소에도 변경 내용 Push
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;$ cd ..&lt;/code&gt;  public의 한 단계 상위 디렉토리로 이동&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ git add .&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ git commit -m &amp;quot;(description)&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ git push origin main&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;여기까지 따라왔다면 블로그에 글을 작성하고 빌드하는 방법은 모두 배우셨습니다.&lt;/p&gt;
+&lt;p&gt;다음 글에서는 &lt;code&gt;config.toml&lt;/code&gt; 파일의 세부 내용을 수정하는 방법과, 마크다운 에디터인 &lt;strong&gt;Typora&lt;/strong&gt;를 사용해 글을 어떻게 짜임새 있게 작성하는가에 대해 다룰 예정입니다!&lt;/p&gt;
 </description>
         </item>
         

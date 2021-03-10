@@ -4,21 +4,63 @@
   
   <url>
     <loc>https://everimind4.github.io/</loc>
-    <lastmod>2021-02-20T15:00:55+09:00</lastmod>
+    <lastmod>2021-02-20T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1</priority>
+  </url>
+  
+  <url>
+    <loc>https://everimind4.github.io/tags/blog/</loc>
+    <lastmod>2021-02-20T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1</priority>
+  </url>
+  
+  <url>
+    <loc>https://everimind4.github.io/categories/</loc>
+    <lastmod>2021-02-20T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1</priority>
+  </url>
+  
+  <url>
+    <loc>https://everimind4.github.io/tags/git/</loc>
+    <lastmod>2021-02-20T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1</priority>
+  </url>
+  
+  <url>
+    <loc>https://everimind4.github.io/tags/hugo/</loc>
+    <lastmod>2021-02-20T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1</priority>
+  </url>
+  
+  <url>
+    <loc>https://everimind4.github.io/categories/hugo/</loc>
+    <lastmod>2021-02-20T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1</priority>
   </url>
   
   <url>
     <loc>https://everimind4.github.io/post/</loc>
-    <lastmod>2021-02-20T15:00:55+09:00</lastmod>
+    <lastmod>2021-02-20T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1</priority>
+  </url>
+  
+  <url>
+    <loc>https://everimind4.github.io/tags/</loc>
+    <lastmod>2021-02-20T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1</priority>
   </url>
   
   <url>
     <loc>https://everimind4.github.io/p/%ED%9C%B4%EA%B3%A0hugo%EB%A1%9C-github-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0-1/</loc>
-    <lastmod>2021-02-20T15:00:55+09:00</lastmod>
+    <lastmod>2021-02-20T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1</priority>
   </url>
@@ -45,19 +87,19 @@
   </url>
   
   <url>
-    <loc>https://everimind4.github.io/categories/</loc>
+    <loc>https://everimind4.github.io/categories/paper/</loc>
+    <changefreq>daily</changefreq>
+    <priority>1</priority>
+  </url>
+  
+  <url>
+    <loc>https://everimind4.github.io/categories/pythongame/</loc>
     <changefreq>daily</changefreq>
     <priority>1</priority>
   </url>
   
   <url>
     <loc>https://everimind4.github.io/search/</loc>
-    <changefreq>daily</changefreq>
-    <priority>1</priority>
-  </url>
-  
-  <url>
-    <loc>https://everimind4.github.io/tags/</loc>
     <changefreq>daily</changefreq>
     <priority>1</priority>
   </url>
