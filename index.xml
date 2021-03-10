@@ -32,8 +32,8 @@
 &lt;ul&gt;
 &lt;li&gt;본 교재는 1부와 2부로 구성되어 있다.
 &lt;ul&gt;
-&lt;li&gt;1부에서는 파이썬의 기초 문법에 대해 학습한다&lt;/li&gt;
-&lt;li&gt;2부에서는 학습한 내용을 기초로 하여 직접 고전 게임을 만들어보는 프로젝트를 진행한다.&lt;/li&gt;
+&lt;li&gt;1부에서는 파이썬의 기초 문법에 대해 학습&lt;/li&gt;
+&lt;li&gt;2부에서는 학습한 내용을 기초로 하여 직접 고전 게임을 만들어보는 프로젝트를 진행&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;따라서 해당 교재를 공부한 내용과 프로젝트를 수행한 결과물을 본 블로그 및 Github Repository에 업로드 할 예정이다!&lt;/li&gt;
@@ -62,7 +62,7 @@
 &lt;p&gt;나는 아나콘다를 제외하고 파이썬만 &lt;a class=&#34;link&#34; href=&#34;https://www.python.org/downloads/windows/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;여기&lt;/a&gt;서 다운받아 설치하였다.&lt;/p&gt;
 &lt;p&gt;설치 완료 후 명령 프롬프트를 열어 &lt;code&gt;pip install pygame&lt;/code&gt; 명령어를 입력한다.&lt;/p&gt;
-&lt;p&gt;마찬가지로 설치가 완료되면, &lt;strong&gt;파이썬 쉘&lt;/strong&gt;을 실행해 &lt;code&gt;import pygame&lt;/code&gt; 명령어로 설치 여부를 확인한다.&lt;/p&gt;
+&lt;p&gt;마찬가지로 설치가 완료되면, &lt;strong&gt;파이썬&lt;/strong&gt;을 실행해 &lt;code&gt;import pygame&lt;/code&gt; 명령어로 설치 여부를 확인한다.&lt;/p&gt;
 &lt;p&gt;&lt;figure style=&#34;flex-grow: 583; flex-basis: 1399px&#34;&gt;
 		&lt;a href=&#34;https://everimind4.github.io/p/%EA%B2%8C%EC%9E%84%EC%9C%BC%EB%A1%9C-%EB%B0%B0%EC%9A%B0%EB%8A%94-%ED%8C%8C%EC%9D%B4%EC%8D%AC-1/capture01.PNG&#34; data-size=&#34;758x130&#34;&gt;&lt;img src=&#34;https://everimind4.github.io/p/%EA%B2%8C%EC%9E%84%EC%9C%BC%EB%A1%9C-%EB%B0%B0%EC%9A%B0%EB%8A%94-%ED%8C%8C%EC%9D%B4%EC%8D%AC-1/capture01.PNG&#34;
 				srcset=&#34;https://everimind4.github.io/p/%EA%B2%8C%EC%9E%84%EC%9C%BC%EB%A1%9C-%EB%B0%B0%EC%9A%B0%EB%8A%94-%ED%8C%8C%EC%9D%B4%EC%8D%AC-1/capture01_hu450ee7010b532a40b5fddad8da76df80_5442_480x0_resize_box_2.PNG 480w, https://everimind4.github.io/p/%EA%B2%8C%EC%9E%84%EC%9C%BC%EB%A1%9C-%EB%B0%B0%EC%9A%B0%EB%8A%94-%ED%8C%8C%EC%9D%B4%EC%8D%AC-1/capture01_hu450ee7010b532a40b5fddad8da76df80_5442_1024x0_resize_box_2.PNG 1024w&#34;
