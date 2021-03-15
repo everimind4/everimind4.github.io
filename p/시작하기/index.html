@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Python 및 PyGame 설치'><title>시작하기</title>
+
+<link rel='canonical' href='https://everimind4.github.io/p/%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='시작하기'>
+<meta property='og:description' content='Python 및 PyGame 설치'>
+<meta property='og:url' content='https://everimind4.github.io/p/%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/'>
+<meta property='og:site_name' content='Alan Choi'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Python' /><meta property='article:published_time' content='2021-03-10T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-03-10T00:00:00&#43;00:00'/><meta property='og:image' content='https://everimind4.github.io/p/%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/cover.png' />
+<meta name="twitter:title" content="시작하기">
+<meta name="twitter:description" content="Python 및 PyGame 설치"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://everimind4.github.io/p/%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/cover.png' />
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-190256788-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container main-container flex on-phone--column extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+                    <img src="https://raw.githubusercontent.com/everimind4/everimind4.github.io/main/Sunrise_Bulb_Square.jpg" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+
+                
+                    <span class="emoji">🤔</span>
+                
+            </figure>
+        
+        <h1 class="site-name"><a href="https://everimind4.github.io/">Alan Choi</a></h1>
+        <h2 class="site-description">Linux Kernel, SSD, Operating System</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://everimind4.github.io/" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/">
+                <img src="/p/%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/cover_hu0583afeab19a2de7dc49fcc1be6b44c7_761261_800x0_resize_box_2.png"
+                        srcset="/p/%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/cover_hu0583afeab19a2de7dc49fcc1be6b44c7_761261_800x0_resize_box_2.png 800w, /p/%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/cover_hu0583afeab19a2de7dc49fcc1be6b44c7_761261_1600x0_resize_box_2.png 1600w"
+                        width="800" 
+                        height="1098" 
+                        loading="lazy"
+                        alt="Featured image of post 시작하기" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/pythongame/" style="background-color: #347ab4; color: #ffffff;">
+                PythonGame
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/p/%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/">시작하기</a>
+    </h2>
+
+    
+    <h3 class="article-subtitle">
+        Python 및 PyGame 설치
+    </h3>
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">Mar 10, 2021</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h3 id="교재-소개">교재 소개</h3>
+<ul>
+<li>파이썬을 공부하고자 좋은 교재가 없는지 찾아보다, 기초 문법도 학습할 수 있고 개인 프로젝트도 직접 만들어 볼 수 있는 교재를 발견하였다. 바로 <a class="link" href="https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=186485278"  target="_blank" rel="noopener"
+    >게임으로 배우는 파이썬</a>!</li>
+</ul>
+<p><img src="cover.jpg" alt="게임으로 배우는 파이썬"  /></p>
+<ul>
+<li>본 교재는 1부와 2부로 구성되어 있다.
+<ul>
+<li>1부에서는 파이썬의 기초 문법에 대해 학습</li>
+<li>2부에서는 학습한 내용을 기초로 하여 직접 고전 게임을 만들어보는 프로젝트를 진행</li>
+</ul>
+</li>
+<li>따라서 해당 교재를 공부한 내용과 프로젝트를 수행한 결과물을 본 블로그 및 Github Repository에 업로드 할 예정이다!</li>
+</ul>
+<h3 id="1-파이썬python-소개">1. 파이썬(Python) 소개</h3>
+<h4 id="11-라이브러리">1.1 라이브러리</h4>
+<p>파이썬은 문법이 간단해 배우기 쉽지만, 그것만으로는 할 수 있는 일이 제한적이다.</p>
+<p>따라서 목적에 맞는 라이브러리를 로드해 사용한다.</p>
+<p>대표적인 라이브러리의 종류는 다음과 같다.</p>
+<ul>
+<li><strong>NumPy</strong> : 수치 계산</li>
+<li><strong>SciPy</strong> : 과학 기술 계산</li>
+<li><strong>PIL</strong> : 영상처리</li>
+<li><strong>Tkinter</strong> : GUI(그래픽 유저 인터페이스)</li>
+<li><strong>Beautiful Soup</strong> : HTML 정보 수집(스크래핑)</li>
+<li><strong>PyGame</strong> : 게임 제작</li>
+<li>파일을 읽고 쓰거나 네트워크 작업에 관련된 라이브러리 등의 <strong>표준 라이브러리</strong></li>
+<li>기타 수많은 <strong>3rd Party</strong> 라이브러리</li>
+</ul>
+<p>이처럼 다양한 라이브러리들이 많은데, 이 책은 게임을 만드는 것을 목표로 하고 있으므로 PyGame은 무조건 사용할 것 같고, 나중에 다른 라이브러리도 사용하게 될 지 모를 일이다.</p>
+<h4 id="12-설치">1.2 설치</h4>
+<ul>
+<li>Python 3 설치 : Windows 사용자는 아나콘다 혹은 파이썬을 설치할 것 (현재 최신 버전 : 3.9.2)</li>
+<li>PyGame 라이브러리 다운로드</li>
+</ul>
+<p>나는 아나콘다를 제외하고 파이썬만 <a class="link" href="https://www.python.org/downloads/windows/"  target="_blank" rel="noopener"
+    >여기</a>서 다운받아 설치하였다.</p>
+<p>설치 완료 후 명령 프롬프트를 열어 <code>pip install pygame</code> 명령어를 입력한다.</p>
+<p>마찬가지로 설치가 완료되면, <strong>파이썬</strong>을 실행해 <code>import pygame</code> 명령어로 설치 여부를 확인한다.</p>
+<p><figure style="flex-grow: 583; flex-basis: 1399px">
+		<a href="/p/%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/capture01.PNG" data-size="758x130"><img src="/p/%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/capture01.PNG"
+				srcset="/p/%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/capture01_hu450ee7010b532a40b5fddad8da76df80_5442_480x0_resize_box_2.PNG 480w, /p/%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/capture01_hu450ee7010b532a40b5fddad8da76df80_5442_1024x0_resize_box_2.PNG 1024w"
+				width="758"
+				height="130"
+				loading="lazy"
+				alt="이런 메시지가 출력되면 성공(인 것 같다)">
+		</a>
+		
+		<figcaption>이런 메시지가 출력되면 성공(인 것 같다)</figcaption>
+		
+	</figure></p>
+<p>MacOS 설치 방법은 생략하도록 하겠다(찾아보면 금방 나오고 별로 다르지도 않다).</p>
+<p>다음 글에서는 Python의 자료형과 자료구조에 대해 학습할 예정이다.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/python/">Python</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="has-image">
+    <a href="/p/%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%98%95%EA%B3%BC-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B5%AC%EC%A1%B0/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%98%95%EA%B3%BC-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B5%AC%EC%A1%B0/cover.abc64792fe4bfff8f521263d607e04b4_hu0583afeab19a2de7dc49fcc1be6b44c7_761261_250x150_fill_box_smart1_2.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="" 
+                        data-hash="md5-q8ZHkv5L//j1ISY9YH4EtA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">데이터형과 데이터 구조</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "everimind4-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (DISQUS) {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2021 Alan Choi
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.2.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
