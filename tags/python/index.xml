@@ -6,13 +6,24 @@
     <description>Recent content in Python on Alan Choi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 15 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://everimind4.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 22 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://everimind4.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>데이터형과 데이터 구조</title>
-      <link>https://everimind4.github.io/p/%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%98%95%EA%B3%BC-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B5%AC%EC%A1%B0/</link>
+      <title>데이터형과 데이터 구조 (2)</title>
+      <link>https://everimind4.github.io/p/%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%98%95%EA%B3%BC-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B5%AC%EC%A1%B0-2/</link>
+      <pubDate>Mon, 22 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://everimind4.github.io/p/%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%98%95%EA%B3%BC-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B5%AC%EC%A1%B0-2/</guid>
+      <description>4. 데이터형 파이썬의 기본적인 데이터형은 다음과 같다.
+   종류 예약어 상세 예시     정수 int 소수점이 없음 4, 2, 6   실수 float 소수점이 있음 3.14, 2.71   문자열(String) str 문자열의 나열 &#39;everimind4&#39;   부울(Boolean) bool 논리값을 저장 True, False    1. 숫자 숫자를 저장하기 위한 변수는 다른 언어들과 마찬가지로 2종류가 있다.
+ 정수형 : 정수 값을 저장, 소수점이 없다. 실수형 : 실수 값을 저장, 소수점이 있고, 부동소수형이라고도 한다.</description>
+    </item>
+    
+    <item>
+      <title>데이터형과 데이터 구조 (1)</title>
+      <link>https://everimind4.github.io/p/%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%98%95%EA%B3%BC-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B5%AC%EC%A1%B0-1/</link>
       <pubDate>Mon, 15 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://everimind4.github.io/p/%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%98%95%EA%B3%BC-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B5%AC%EC%A1%B0/</guid>
+      <guid>https://everimind4.github.io/p/%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%98%95%EA%B3%BC-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B5%AC%EC%A1%B0-1/</guid>
       <description>1. 연산 1.1 기본 연산자 코딩을 조금이라도 공부해 본 사람은 알겠지만, 파이썬에서는 여타 수많은 프로그래밍 언어와 마찬가지로 다양한 연산자를 지원하고 있다.
     수학에서의 기호 파이썬에서의 기호     덧셈 + +   뺄셈 - -   곱셈 × *   나눗셈 ÷ /     주의할 점은, 자료형(정수형, 실수형, &amp;hellip;)에 따라 계산 방식이 조금씩 다를 수 있다는 것이다.  또, Python IDLE Shell에서는 파이썬 코드를 입력하면 실행 결과가 바로 출력되는 것을 볼 수 있다.</description>
     </item>

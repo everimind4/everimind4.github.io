@@ -4,48 +4,55 @@
   
   <url>
     <loc>https://everimind4.github.io/</loc>
-    <lastmod>2021-03-15T00:00:00+00:00</lastmod>
+    <lastmod>2021-03-22T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1</priority>
   </url>
   
   <url>
     <loc>https://everimind4.github.io/categories/</loc>
-    <lastmod>2021-03-15T00:00:00+00:00</lastmod>
+    <lastmod>2021-03-22T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1</priority>
   </url>
   
   <url>
     <loc>https://everimind4.github.io/post/</loc>
-    <lastmod>2021-03-15T00:00:00+00:00</lastmod>
+    <lastmod>2021-03-22T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1</priority>
   </url>
   
   <url>
     <loc>https://everimind4.github.io/tags/python/</loc>
-    <lastmod>2021-03-15T00:00:00+00:00</lastmod>
+    <lastmod>2021-03-22T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1</priority>
   </url>
   
   <url>
     <loc>https://everimind4.github.io/categories/pythongame/</loc>
-    <lastmod>2021-03-15T00:00:00+00:00</lastmod>
+    <lastmod>2021-03-22T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1</priority>
   </url>
   
   <url>
     <loc>https://everimind4.github.io/tags/</loc>
-    <lastmod>2021-03-15T00:00:00+00:00</lastmod>
+    <lastmod>2021-03-22T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1</priority>
   </url>
   
   <url>
-    <loc>https://everimind4.github.io/p/%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%98%95%EA%B3%BC-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B5%AC%EC%A1%B0/</loc>
+    <loc>https://everimind4.github.io/p/%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%98%95%EA%B3%BC-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B5%AC%EC%A1%B0-2/</loc>
+    <lastmod>2021-03-22T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1</priority>
+  </url>
+  
+  <url>
+    <loc>https://everimind4.github.io/p/%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%98%95%EA%B3%BC-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B5%AC%EC%A1%B0-1/</loc>
     <lastmod>2021-03-15T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1</priority>
