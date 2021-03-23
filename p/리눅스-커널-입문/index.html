@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='유닉스, 리눅스, 운영체제'><title>리눅스 커널 입문</title>
+
+<link rel='canonical' href='https://everimind4.github.io/p/%EB%A6%AC%EB%88%85%EC%8A%A4-%EC%BB%A4%EB%84%90-%EC%9E%85%EB%AC%B8/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='리눅스 커널 입문'>
+<meta property='og:description' content='유닉스, 리눅스, 운영체제'>
+<meta property='og:url' content='https://everimind4.github.io/p/%EB%A6%AC%EB%88%85%EC%8A%A4-%EC%BB%A4%EB%84%90-%EC%9E%85%EB%AC%B8/'>
+<meta property='og:site_name' content='Alan Choi'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Linux' /><meta property='article:tag' content='OS' /><meta property='article:published_time' content='2021-03-23T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-03-23T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="리눅스 커널 입문">
+<meta name="twitter:description" content="유닉스, 리눅스, 운영체제">
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-190256788-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container main-container flex on-phone--column extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+                    <img src="https://raw.githubusercontent.com/everimind4/everimind4.github.io/main/Sunrise_Bulb_Square.jpg" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+
+                
+                    <span class="emoji">🤔</span>
+                
+            </figure>
+        
+        <h1 class="site-name"><a href="https://everimind4.github.io/">Alan Choi</a></h1>
+        <h2 class="site-description">Linux Kernel, SSD, Operating System</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://everimind4.github.io/" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/linux/" style="background-color: #FFB300; color: #fff;">
+                Linux
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/p/%EB%A6%AC%EB%88%85%EC%8A%A4-%EC%BB%A4%EB%84%90-%EC%9E%85%EB%AC%B8/">리눅스 커널 입문</a>
+    </h2>
+
+    
+    <h3 class="article-subtitle">
+        유닉스, 리눅스, 운영체제
+    </h3>
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">Mar 23, 2021</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h6 id="본-포스트에서는-리눅스-커널-심층-분석httpswwwaladincokrshopwproductaspxitemid18480581linux-kernel-development을-교재로-하여-공부한-내용을-정리합니다">본 포스트에서는 <a class="link" href="https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=18480581"  target="_blank" rel="noopener"
+    >리눅스 커널 심층 분석</a>(Linux Kernel Development)을 교재로 하여 공부한 내용을 정리합니다.</h6>
+<h2 id="1-유닉스의-역사">1. 유닉스의 역사</h2>
+<p>리눅스는 유닉스를 바탕으로 만들어졌다. 따라서 유닉스에 대해 간단하게 살펴볼 필요가 있다.</p>
+<p>유닉스는 1969년에 <a class="link" href="https://ko.wikipedia.org/wiki/%EB%8D%B0%EB%8B%88%EC%8A%A4_%EB%A6%AC%EC%B9%98"  target="_blank" rel="noopener"
+    >데니스 리치</a>와 <a class="link" href="https://ko.wikipedia.org/wiki/%EC%BC%84_%ED%86%B0%ED%94%84%EC%8A%A8"  target="_blank" rel="noopener"
+    >켄 톰슨</a>에 의해 개발되었다. 추후 많은 수정을 거치며 다양한 곳에서 강력한 도구로 사용되었다. 이처럼 유닉스가 널리 사용될 수 있도록 만들어 준 몇 가지 특징들은 다음과 같다.</p>
+<h4 id="단순하다">단순하다.</h4>
+<p>매우 직관적이고 명확한 몇백 가지의 시스템 호출(System call)로 이뤄져 있다.</p>
+<h4 id="거의-모든-것이-파일이다">(거의) 모든 것이 파일이다.</h4>
+<p>따라서 몇 가지 핵심 시스템 호출(<code>open()</code>, <code>read()</code>, <code>write()</code>, <code>lseek()</code>, <code>close()</code>) 만으로 모든 데이터와 장비를 다룰 수 있다.</p>
+<h4 id="커널과-유틸리티가-모두-c로-작성되었다">커널과 유틸리티가 모두 C로 작성되었다.</h4>
+<p>C의 뛰어난 이식성으로 인해 유닉스는 다양한 아키텍처에 쉽게 이식이 가능하다.</p>
+<h4 id="프로세스-생성이-빠르다">프로세스 생성이 빠르다.</h4>
+<p>고유의 <code>fork()</code> 시스템 호출을 사용한다.</p>
+<h4 id="효율적인-프로세스-간-통신-수단ipc을-제공한다">효율적인 프로세스 간 통신 수단(IPC)을 제공한다.</h4>
+<p>(아직 용어나 개념을 더 공부해야 하지만, 여하튼) <strong>단순하고 명쾌한 설계</strong>가 최대 장점이라고 볼 수 있다.</p>
+<h2 id="2-리눅스의-개발">2. 리눅스의 개발</h2>
+<p><a class="link" href="https://ko.wikipedia.org/wiki/%EB%A6%AC%EB%88%84%EC%8A%A4_%ED%86%A0%EB%A5%B4%EB%B0%9C%EC%8A%A4"  target="_blank" rel="noopener"
+    >리누스 토발즈</a>(Linus Tobalds)는 대학을 다니던 중 리눅스를 개발했다.</p>
+<p>당시 학교에서는 <em>UNIX</em>의 교육용 버전인 <em>Minix</em>를 사용했다고 하는데, 소스 코드도 수정할 수 없었고 무엇보다도 <strong>Minix의 설계에 실망했다</strong>.</p>
+<blockquote>
+<p><em>이런 불만에 대해 리누스는 보통의 정상적인 대학생이 할만한 일을 했다.</em></p>
+<p>바로 <strong>직접 운영체제를 만들기로 한 것</strong>이다.</p>
+<p>&lt;리눅스 커널 심층 분석&gt;(3판), p.39</p>
+</blockquote>
+<p><del>책에 오류가 있는 것 같지만 넘어가자</del></p>
+<p>그리고 이후 대학 생활 내내 리눅스 에뮬레이터를 수정하고, 1991년 최초로 인터넷을 통해 공개했다. 이후 다양한 사람들의 참여로 리눅스는 점점 <strong>개발자의 협업 프로젝트</strong>로 발전하게 되었다.</p>
+<p>리눅스는 유닉스와 비슷하지만 많은 차이가 있다. 다 정리할 수는 없고, 대표적인 특징만 이야기하자면 다음과 같다.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">공통점</th>
+<th style="text-align:center">차이점</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">유닉스의 설계 목적 및 인터페이스를 계승하였고, API를 구현하였다.</td>
+<td style="text-align:center">상용 제품이 아닌 오픈소스이다. (단, 수정본도 오픈소스로 배포해야 한다.)</td>
+</tr>
+</tbody>
+</table>
+<p>또한 앞으로 <strong>리눅스</strong>라는 단어는 주로 <strong>리눅스 커널</strong>을 칭한다.</p>
+<h2 id="3-운영체제와-커널">3. 운영체제와 커널</h2>
+<h4 id="운영체제의-정의">운영체제의 정의</h4>
+<p>명확한 정의는 어렵지만, 기술적 관점에서는 기본적인 사용 및 관리를 담당하는 <strong>시스템의 일부</strong>를 의미한다.</p>
+<p>커널, 장치 드라이버, 부트로더, CLI/GUI등의 사용자 인터페이스, 기본적인 파일 및 시스템 유틸리티 등이 포함된다.</p>
+<h4 id="커널kernel이란">커널(Kernel)이란?</h4>
+<p>운영체제의 가장 핵심이 되는 소프트웨어로, 다음 역할을 수행한다.</p>
+<ul>
+<li>시스템의 다른 모든 부분에 기본적인 서비스를 제공한다.</li>
+<li>하드웨어를 관리한다.</li>
+<li>시스템 자원을 분배한다.</li>
+</ul>
+<p>따라서 커널을 <strong>관리자</strong>(Supervisor), <strong>코어</strong>(Core), <strong>내부</strong>(internals) 등으로 부른다.</p>
+<h4 id="커널-구성-요소">커널 구성 요소</h4>
+<ul>
+<li>인터럽트 핸들러(interrupt handler) : 인터럽트 서비스 요청 처리</li>
+<li>스케줄러(Scheduler) : 프로세스 실행 시간을 여러 프로세스에 분배</li>
+<li>메모리 관리 시스템 : 프로세스 주소 공간 관리</li>
+<li>시스템 서비스 : 네트워크 및 프로세스 간 통신 처리</li>
+</ul>
+<h4 id="커널-공간과-사용자-공간">커널 공간과 사용자 공간</h4>
+<p>커널 공간은 <strong>시스템 상태와 메모리 공간을 합친 것</strong>을 의미하고, 사용자 공간은 <strong>사용자 애플리케이션이 실행</strong>되는 공간을 의미한다.</p>
+<p><strong>커널 코드를 실행하는 경우</strong> 시스템은 커널 모드로 커널 공간에 존재한다.</p>
+<p>반면 시스템이 <strong>일반적인 프로세스를 처리하는 경우</strong>에는 사용자 모드로 사용자 공간에 존재한다.</p>
+<h4 id="인터럽트">인터럽트</h4>
+<p>커널은 시스템의 하드웨어도 관리한다. 여기서 &lsquo;인터럽트&rsquo;라는 개념이 등장하는데, 하드웨어와 시스템이 서로 통신할 때 하드웨어는 인터럽트를 발생시키고, 프로세서를 중단시킨 후 커널을 중단시킨다. 키보드나 마우스로 입력을 하는 경우에 이런 인터럽트가 발생하게 된다.</p>
+<p>외부로부터 입력이 존재하는 경우 기존 실행 중이던 프로세스에 해당 신호를 보내는 것을 의미한다고 볼 수 있을 것 같다.</p>
+<p>인터럽트의 종류는 숫자로 구분된다. 커널은 이 숫자를 이용해 인터럽트를 처리하고 응답할 인터럽트 핸들러를 실행한다. 인터럽트 핸들러는 프로세스 컨텍스트에서 실행되지 않고, 다른 프로세스와 분리된 별도의 인터럽트 컨텍스트에서 실행한다.</p>
+<h4 id="프로세스의-상태">프로세스의 상태</h4>
+<p>따라서 프로세스는 어느 순간 반드시 다음 3가지 중 한 가지 일을 한다고 볼 수 있다.</p>
+<ul>
+<li>사용자 공간에서 프로세스의 사용자 코드를 실행</li>
+<li>커널 공간의 프로세스 컨텍스트에서 특정 프로세스를 대신해 코드를 실행</li>
+<li>커널 공간의 인터럽트 컨텍스트에서 프로세스와 상관없이 인터럽트를 처리</li>
+</ul>
+<h2 id="4-리눅스-커널-vs-유닉스-커널">4. 리눅스 커널 vs 유닉스 커널</h2>
+<p>리눅스는 유닉스처럼 메모리 관리 장치(MMU)가 필요한 모노리딕(Monolithic) 커널이다.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">모노리딕(Monolithic) 커널</th>
+<th style="text-align:center">마이크로(Micro) 커널</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">특징</td>
+<td style="text-align:center">단일 주소 공간에서 단일 프로세스로 실행</td>
+<td style="text-align:center">커널의 기능을 별도로 분리한 &lsquo;서버 프로세스&rsquo;로 실행</td>
+</tr>
+<tr>
+<td style="text-align:center">호출</td>
+<td style="text-align:center">커널 내의 통신으로 함수를 직접 호출</td>
+<td style="text-align:center">IPC를 통해 메시지를 보내 서비스를 간접적으로 호출</td>
+</tr>
+<tr>
+<td style="text-align:center">실행 공간</td>
+<td style="text-align:center">모든 기능이 커널 공간에서 실행</td>
+<td style="text-align:center">특정 프로세스를 제외한 나머지는 모두 유저 공간에서 실행</td>
+</tr>
+<tr>
+<td style="text-align:center">장점</td>
+<td style="text-align:center">같은 공간에서 실행되므로 단순하고 빠름</td>
+<td style="text-align:center">서버가 분리되어 있어 문제가 생겨도 서로 영향을 주지 않음</td>
+</tr>
+</tbody>
+</table>
+<p>여기서 마이크로 커널은 여러 서버 프로세스로 나뉘어 있어 복잡하며 성능이 다소 저하된다는 문제가 있다.</p>
+<p>그리고 리눅스는 모노리딕 커널임에도 모듈화 및 스레드 지원, 스케줄링 구현 등을 통해 마이크로 커널의 장점을 구현하였다.</p>
+<h2 id="5-리눅스-커널-버전">5. 리눅스 커널 버전</h2>
+<p>리눅스 커널 버전은 <code>.</code>으로 구분된 4개의 숫자로 이루어져 있다.</p>
+<p>예를 들어 커널 버전이 <code>2.6.26.1</code>이라고 하면, 각 숫자는 다음을 의미한다.</p>
+<ul>
+<li><code>2</code> : 메인 버전</li>
+<li><code>6</code> : 서브 버전</li>
+<li><code>26</code> : 개정판</li>
+<li><code>1</code> : 안정 버전 일련번호</li>
+</ul>
+<h4 id="안정-버전과-개발-버전">안정 버전과 개발 버전</h4>
+<p>서브 버전을 나타내는 2번째 숫자가 <strong>짝수이면 안정 버전, 홀수이면 개발 버전</strong>이다.</p>
+<p>안정 버전은 소규모 업데이트가 일어나고, 개발 버전은 급격하고 빠른 변화가 일어난다.</p>
+<p>4번째 숫자는 안정 버전에서만 사용되며, 해당 버전이 몇 번째인가를 나타낸다.</p>
+<h2 id="마치며">마치며</h2>
+<p>여기까지 리눅스 커널의 기본적인 개념에 대해 알아보았다.</p>
+<p>다음 챕터의 내용은 리눅스 설치를 다루고 있는데, 구체적으로 정리하기보다 그냥 훑고 넘어가기로 하였다.</p>
+<p>따라서 다음 글은 3장 &lsquo;프로세스 관리&rsquo;부터 다루게 될 예정이다.</p>
+<p>(다음 글에서 계속됩니다.)</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/linux/">Linux</a>
+        
+            <a href="/tags/os/">OS</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+</aside>
+
+
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "everimind4-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (DISQUS) {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2021 Alan Choi
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.2.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
