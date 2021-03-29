@@ -6,7 +6,18 @@
     <description>Recent content in Python on Alan Choi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 22 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://everimind4.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 29 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://everimind4.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>데이터형과 데이터 구조 (3)</title>
+      <link>https://everimind4.github.io/p/%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%98%95%EA%B3%BC-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B5%AC%EC%A1%B0-3/</link>
+      <pubDate>Mon, 29 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://everimind4.github.io/p/%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%98%95%EA%B3%BC-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B5%AC%EC%A1%B0-3/</guid>
+      <description>7. 관련 함수들 len 리스트나 튜플 내의 요소 개수를 반환하는 함수이다.
+&amp;gt;&amp;gt;&amp;gt; len([&amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;c&amp;#39;, &amp;#39;d&amp;#39;]) 4 &amp;gt;&amp;gt;&amp;gt; len([2, 3, 5, 7, 11, 13]) 6 대상 요소가 무엇이든 전체 개수만 반환하므로, 2차원 이상의 리스트 혹은 튜플의 경우에는 다음과 같은 결과를 확인할 수 있다.
+&amp;gt;&amp;gt;&amp;gt; fibonacci = [[1, 1, 2, 3, 5, 8], [13, 21, 34, 55, 89], [144, 233, 377, 610, 987]] &amp;gt;&amp;gt;&amp;gt; len(fibonacci) 3 &amp;gt;&amp;gt;&amp;gt; len(fibonacci[2]) 5 copy 리스트를 복제하는 (리스트) 메소드이다.</description>
+    </item>
+    
     <item>
       <title>데이터형과 데이터 구조 (2)</title>
       <link>https://everimind4.github.io/p/%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%98%95%EA%B3%BC-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B5%AC%EC%A1%B0-2/</link>
