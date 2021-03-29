@@ -650,7 +650,7 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;C:\Hugo\blog&lt;/strong&gt;로 이동&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;$ git init&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;$ git remote add origin https://github.com/everimind4/blog.git public&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ git remote add origin https://github.com/everimind4/blog.git&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;code&gt;everimind4.github.io&lt;/code&gt; 저장소를 &lt;code&gt;blog&lt;/code&gt;의 submodule로 등록
