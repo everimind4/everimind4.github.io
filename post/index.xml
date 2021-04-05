@@ -60,5 +60,16 @@
 그래서 관련 내용을 정리해서 포스팅하면 Hugo로 블로그를 만들어 Github로 호스팅하고자 하는 사람들이 조금이나마 도움을 받을 수 있을 듯 하여, 첫 포스팅 주제는 블로그를 만드는 방법으로 결정!</description>
     </item>
     
+    <item>
+      <title></title>
+      <link>https://everimind4.github.io/p/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://everimind4.github.io/p/</guid>
+      <description>author = &amp;ldquo;Alan Choi&amp;rdquo; title = &amp;ldquo;제어문 (1)&amp;rdquo; date = &amp;ldquo;2021-04-05&amp;rdquo; description = &amp;ldquo;들여쓰기, 조건문, 반복문&amp;rdquo; categories = [ &amp;ldquo;PythonGame&amp;rdquo; ] tags = [ &amp;ldquo;Python&amp;rdquo;, ] image = &amp;ldquo;cover.png&amp;rdquo;
++++
+test</description>
+    </item>
+    
   </channel>
 </rss>

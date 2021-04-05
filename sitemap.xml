@@ -129,6 +129,12 @@
   </url>
   
   <url>
+    <loc>https://everimind4.github.io/p/</loc>
+    <changefreq>daily</changefreq>
+    <priority>1</priority>
+  </url>
+  
+  <url>
     <loc>https://everimind4.github.io/categories/linux/</loc>
     <changefreq>daily</changefreq>
     <priority>1</priority>
