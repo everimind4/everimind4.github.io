@@ -13,8 +13,10 @@
       <pubDate>Mon, 05 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://everimind4.github.io/p/%EC%A0%9C%EC%96%B4%EB%AC%B8-1/</guid>
-      <description>test
-test</description>
+      <description>1. 들여쓰기(Indentation)  C에서는 코드 실행 단위인 블록을 구분하기 위해 중괄호{ }를 사용하고, 들여쓰기는 가독성을 증진시키는 데만 사용되는 개념이었다.
+하지만 파이썬에서는 들여쓰기 수준으로 코드 블록을 구분한다.
+ C/C++ Style if (조건문) { 명령1; 명령2; } Python Style if a &amp;gt; b: 명령1 명령2 C와 비교했을 때, Python의 문법적 차이는 다음와 같다.
+ 조건문을 괄호( )로 싸지 않고 콜론:을 조건문 뒤에 적는 것으로 간단하게 사용한다. 명령문의 끝에 세미콜론;을 적지 않는다. (적어도 상관은 없음) 코드 블록을 감싸는 중괄호{ }를 생략한다.</description>
     </item>
     
     <item>
