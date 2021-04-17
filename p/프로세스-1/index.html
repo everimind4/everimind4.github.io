@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='CPU 가상화, 정의, 상태변화'><title>프로세스 (1)</title>
+
+<link rel='canonical' href='https://everimind4.github.io/p/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-1/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='프로세스 (1)'>
+<meta property='og:description' content='CPU 가상화, 정의, 상태변화'>
+<meta property='og:url' content='https://everimind4.github.io/p/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-1/'>
+<meta property='og:site_name' content='Alan Choi'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Virtualization' /><meta property='article:tag' content='Process' /><meta property='article:published_time' content='2021-04-17T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-04-17T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="프로세스 (1)">
+<meta name="twitter:description" content="CPU 가상화, 정의, 상태변화">
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-190256788-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container main-container flex on-phone--column extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+                    <img src="https://raw.githubusercontent.com/everimind4/everimind4.github.io/main/Sunrise_Bulb_Square.jpg" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+
+                
+                    <span class="emoji">🤔</span>
+                
+            </figure>
+        
+        <h1 class="site-name"><a href="https://everimind4.github.io/">Alan Choi</a></h1>
+        <h2 class="site-description">Linux Kernel, SSD, Operating System</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://everimind4.github.io/" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/os/" style="background-color: #94C227; color: #fff;">
+                Operating System
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/p/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-1/">프로세스 (1)</a>
+    </h2>
+
+    
+    <h3 class="article-subtitle">
+        CPU 가상화, 정의, 상태변화
+    </h3>
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">Apr 17, 2021</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h2 id="virtualization-가상화">Virtualization (가상화)</h2>
+<p>가상화는 실제 대상을 가상의 대상으로 바꾸는 것을 의미한다.</p>
+<p><figure style="flex-grow: 129; flex-basis: 310px">
+		<a href="/p/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-1/virtual_peach.png" data-size="765x592"><img src="/p/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-1/virtual_peach.png"
+				srcset="/p/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-1/virtual_peach_hu005ca562b0f176dda443f00f681e8352_273152_480x0_resize_box_2.png 480w, /p/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-1/virtual_peach_hu005ca562b0f176dda443f00f681e8352_273152_1024x0_resize_box_2.png 1024w"
+				width="765"
+				height="592"
+				loading="lazy"
+				alt="복숭아를 가상화해보자">
+		</a>
+		
+		<figcaption>복숭아를 가상화해보자</figcaption>
+		
+	</figure></p>
+<p>실제로 존재하는 복숭아(Physical peach)는 하나이다. 그런데 여러  사용자가 이를 원하는 경우, <strong>복숭아를 가상화하여</strong> 가상의 복숭아(Virtual peach)를 여러 개 만들 수 있다. 그리고 이것들을 복숭아를 원하는 사람들에게 나눠준다.</p>
+<p>가상의 복숭아를 갖고 있는 사람들은 자기만 전용으로 사용하는 복숭아를 갖고 있다는 착각에 빠지는데, 그 이유는 다음과 같다.</p>
+<ul>
+<li>자기가 가지고 있는 가상의 복숭아만 알 수 있다.</li>
+<li>다른 사람들이 존재한다는 사실도 모른다.</li>
+<li>따라서 다른 사람들의 가상의 복숭아를 알 수 없다.</li>
+<li>심지어, 자신의 복숭아가 <strong>가상화되어 있다는 사실도 모른다</strong>.</li>
+</ul>
+<p>이것이 운영체제가 수행하는 가상화의 기본 아이디어이다.</p>
+<p>그런데 <strong>실제 복숭아는 하나밖에 없는데</strong>, 어떻게 전용의 복숭아를 가지고 있다는 환상이 유지될까? 다른 사람이 쓰면 다른 누군가는 쓰지 못하지 않을까?</p>
+<p>결론부터 말하자면, <strong>&ldquo;가상의 복숭아&quot;라는 환상</strong>은 각 사람이 <strong>항상 복숭아를 사용하지 않기 때문에 유지</strong>될 수 있다.</p>
+<p>각  사람은 자신이 가지고 있는 가상의 복숭아를 잠깐 사용하지만, 나머지 대부분의 시간은 낮잠을 자기도 하고, 다른 일을 하기도 한다.</p>
+<p>운영체제는 중간에서 A라는 사람이 짧은 시간 동안 복숭아를 사용하고 나면 B에게 주고, B가 또 짧은 시간 동안 복숭아를 사용한 후에 C에게 복숭아를 주는 작업을 중간에서 수행한다.</p>
+<p>즉, 각 사람이 복숭아를 사용하지 않을 때는 다른 사람이 사용할 수 있도록 이리저리 옮겨 준다.</p>
+<p>물론 한 사람이 항상 복숭아를 사용하고 있다면 가상의 복숭아라는 환상이 깨지게 되겠지만, 실제로 각 사람이 복숭아를 필요로 하는 시간은 매우 짧기 때문에, 각 사람이 전용의 복숭아를 가지고 있다는 같은 환상을 잘 유지할 수 있다.</p>
+<p>이로부터 알 수 있는 가상화의 특징을 정리해보면 다음과 같다.</p>
+<ul>
+<li>각 사람에게 가상의 복숭아를 나눠 준다.</li>
+<li>각 사람은 매우 짧은 시간동안 복숭아를 사용하므로, 자신만의 전용 복숭아를 가지고 있다는 착각에 빠진다.</li>
+</ul>
+<p>당연하겠지만 실제로는 복숭아 대신 CPU, Memory 등을 가상화해서 제공한다.</p>
+<p>먼저 CPU 가상화를 살펴볼텐데, CPU 가상화를 공부하려면 프로세스에 대해 알아야 한다.</p>
+<h2 id="process-프로세스">Process (프로세스)</h2>
+<p>프로세스는 <strong>프로그램이 실행 중인 상태</strong>를 의미한다.</p>
+<p><figure style="flex-grow: 208; flex-basis: 500px">
+		<a href="/p/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-1/OS_Architecture.png" data-size="1413x678"><img src="/p/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-1/OS_Architecture.png"
+				srcset="/p/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-1/OS_Architecture_hu24fb56ba589354b6da80b9a13fdacd95_272584_480x0_resize_box_2.png 480w, /p/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-1/OS_Architecture_hu24fb56ba589354b6da80b9a13fdacd95_272584_1024x0_resize_box_2.png 1024w"
+				width="1413"
+				height="678"
+				loading="lazy"
+				alt="운영체제와 외부 구조">
+		</a>
+		
+		<figcaption>운영체제와 외부 구조</figcaption>
+		
+	</figure></p>
+<p>운영체제(Operating System)은 <strong>하드웨어 자원들을 관리</strong>하고, 프로세스들이 **시스템 콜(System call)**을 통해 하드웨어 자원을 요청하면 <strong>해당 자원을 가상화하여 프로세스에게 제공</strong>해 준다.</p>
+<h4 id="프로세스-작동-과정running-a-process">프로세스 작동 과정(Running a Process)</h4>
+<p>프로세스는 다음 과정을 반복해서 수행한다.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Fetch</th>
+<th style="text-align:center">Decode</th>
+<th style="text-align:center">Execute</th>
+<th style="text-align:center">Update</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">인스트럭션 가져오기</td>
+<td style="text-align:center">가져온 인스트럭션 해석</td>
+<td style="text-align:center">해석한 결과를 실행</td>
+<td style="text-align:center">새로운 인스트럭션 업데이트</td>
+</tr>
+</tbody>
+</table>
+<p>여러 개의 프로세스를 작동시키고 싶으면 가장 간단하게 사용 가능한 방법은 프로세스마다 CPU를 할당하는 것이다.</p>
+<p>그러나 실행 가능한 프로세스의 수는 수백 가지인데, CPU의 갯수는 멀티코어 환경이라고 하더라도 2자릿수를 넘기기가 힘들다.</p>
+<p>따라서 그 다음으로 생각할 수 있는 방식은 프로세스 간의 **인터리빙(Interleaving, 교차)**이다.</p>
+<p>즉, 프로세스 A의 코드를 실행하다가 일정 시간이 지나면 잠시 멈춘 후 프로세스 B의 코드를 실행하고, 마찬가지로 일정 시간이 지나면 프로세스 C의 코드를 실행하는 것이다.</p>
+<p>인터리빙 방식의 문제는 프로세스 A의 코드에서 프로세스 B의 코드로 직접 이동해야 한다는 점이다. 즉, <strong>전용의 CPU를 사용한다는 환상이 깨진다</strong>. 다른 프로세스에게 CPU를 직접 양보해야 하기 때문이다.</p>
+<p>운영체제도 일종의 프로그램이므로, 자신의 코드를 가지고 있다. 따라서 위와 같은 인터리빙 방식에서 운영체제를 거치도록 하여 인터리빙을 수행하면 가상화의 환상을 깨뜨리지 않고도 각 프로세스의 코드를 실행할 수 있다.</p>
+<p><figure style="flex-grow: 247; flex-basis: 594px">
+		<a href="/p/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-1/Interleaving.png" data-size="2081x840"><img src="/p/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-1/Interleaving.png"
+				srcset="/p/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-1/Interleaving_hu435a6b213904d9adb59faf9ac55e62dd_595477_480x0_resize_box_2.png 480w, /p/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-1/Interleaving_hu435a6b213904d9adb59faf9ac55e62dd_595477_1024x0_resize_box_2.png 1024w"
+				width="2081"
+				height="840"
+				loading="lazy"
+				alt="왼쪽 : 직접 인터리빙 / 오른쪽 : OS 인터리빙">
+		</a>
+		
+		<figcaption>왼쪽 : 직접 인터리빙 / 오른쪽 : OS 인터리빙</figcaption>
+		
+	</figure></p>
+<p>왼쪽 방식에서는 프로세스 A가 프로세스 B에게 CPU를 직접 양보했다면, 오른쪽 방식에서는 실행 중인 프로세스 A로부터 CPU를 운영체제가 받아서 프로세스 B에게 전달함으로써 가상화를 유지할 수 있다.</p>
+<p>이렇게 CPU의 시간을 잘게 나누어서 각 프로세스에게 나눠 주는 방식을 <strong>Time Sharing</strong>이라고 하며, 현대 대부분의 운영체제들이 채택하고 있는 방식이다.</p>
+<h4 id="프로세스란">프로세스란?</h4>
+<p>앞서 이야기했듯 <strong>프로세스는 실행 중인 프로그램을 의미</strong>한다.</p>
+<p>객체지향과 비교해서 생각하면 다음과 같은 비유가 가능하다.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Static</th>
+<th style="text-align:center">Dynamic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">클래스(Class)</td>
+<td style="text-align:center">인스턴스(Instance)</td>
+</tr>
+<tr>
+<td style="text-align:center">프로그램</td>
+<td style="text-align:center">프로세스</td>
+</tr>
+</tbody>
+</table>
+<p>프로세스의 특징은 다음과 같다.</p>
+<ul>
+<li>Protection의 기본적인 단위이다.  프로세스 단위로 자원을 할당하고, 해당 자원에는 다른 프로세스가 간섭할 수 없다.</li>
+<li><strong>PID</strong>(Process ID)를 통해 식별할 수 있다.</li>
+<li>프로세스의 동적인 상태를 정의하는, 다음과 같은 정보들을 포함한다.
+<ul>
+<li>CPU context (Program counter, Stack pointer)</li>
+<li>OS resources (address space, open files, etc.)</li>
+<li>Other information (PID, state, owner, etc.)</li>
+</ul>
+</li>
+</ul>
+<h4 id="프로세스의-실행-과정-process-creation">프로세스의 실행 과정 (Process Creation)</h4>
+<ol>
+<li>프로그램 코드를 메모리에 로드한다.
+<ul>
+<li>메모리 내 프로세스별로 할당된 주소 공간에 로드한다.</li>
+<li>메모리에 로드 시, 프로그램의 코드를 한번에 전부 로드하는 것이 아닌 필요한 부분만 그때그때 로드한다(Lazily Load) : 메모리 가상화의 Demand Paging 기법</li>
+</ul>
+</li>
+<li>프로그램을 실행하기 위한 런타임 스택을 할당한다.
+<ul>
+<li>스택에는 지역 변수, 함수의 매개변수, 반환 주소 등이 저장된다.</li>
+</ul>
+</li>
+<li>동적 할당을 위한 Heap 공간을 할당한다.
+<ul>
+<li>프로세스별로 동적인 공간 할당 요청이 있을 경우 Heap 공간에서 메모리를 할당한다.</li>
+<li>C에서는 <code>malloc()</code>을 사용해 메모리를 할당받고 <code>free()</code>를 사용해 할당을 해제한다.</li>
+</ul>
+</li>
+<li>OS에 의해 초기화 작업이 수행된다.
+<ul>
+<li>모든 프로그램은 기본적으로 3개의 오픈 파일 디스크립터를 만들어 준다.
+<ul>
+<li>표준 입력, 표준 출력, 표준 에러</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>CPU의 제어권이 OS로부터 새로 생성된 프로세스에게 넘어간다.</li>
+</ol>
+<h4 id="프로세스의-상태-process-states">프로세스의 상태 (Process States)</h4>
+<p>프로세스는 다음 3가지 중 하나의 상태를 갖는다.</p>
+<ul>
+<li>
+<p>실행 중 (Running) : CPU를 할당받아 실행 중인 상태</p>
+</li>
+<li>
+<p>대기 중 (Ready) : 실행될 준비는 끝냈지만 CPU를 할당받지 못한 상태</p>
+</li>
+<li>
+<p>정지 (Blocked) : 모종의 이유로 실행이 잠시 중단된 상태</p>
+<ul>
+<li>입출력과 같은 오래 걸리는 작업을 수행하는 경우</li>
+<li>사용자 입력과 같은 이벤트를 기다리고 있는 경우</li>
+</ul>
+<p><figure style="flex-grow: 158; flex-basis: 381px">
+		<a href="/p/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-1/Process_States.png" data-size="1287x810"><img src="/p/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-1/Process_States.png"
+				srcset="/p/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-1/Process_States_hu8b45775c9d2ffb836fdbf13eccb0aea7_276731_480x0_resize_box_2.png 480w, /p/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-1/Process_States_hu8b45775c9d2ffb836fdbf13eccb0aea7_276731_1024x0_resize_box_2.png 1024w"
+				width="1287"
+				height="810"
+				loading="lazy"
+				alt="프로세스 간 상태 전이 관계도">
+		</a>
+		
+		<figcaption>프로세스 간 상태 전이 관계도</figcaption>
+		
+	</figure></p>
+</li>
+<li>
+<p>프로세스는 기본적으로 Ready 상태와 Running 상태를 계속 오가며 실행된다.</p>
+<ul>
+<li>프로세스가 처음 생성되면 Ready 상태가 된다.</li>
+<li>CPU를 할당받아 Running 상태가 된다.</li>
+<li>정해진 할당 시간(Time slice)을 모두 사용하면 Ready 상태가 된다.</li>
+</ul>
+</li>
+<li>
+<p>Running 상태에서 입출력(I/O) 혹은 사용자 Event를 기다려야 하는 경우 Blocked 상태가 된다.</p>
+</li>
+<li>
+<p>Blocked 상태에서 필요한 작업을 다 처리하면 Ready 상태가 된다.</p>
+<ul>
+<li>다시 Ready와 Running 두 상태의 전이를 반복한다.</li>
+</ul>
+</li>
+</ul>
+<h4 id="linux에서의-프로세스">Linux에서의 프로세스</h4>
+<p>리눅스 Shell에서 <code>ps ax</code>명령어를 입력하면 현재 실행 중인 프로세스 목록을 확인할 수 있다.</p>
+<p>PID, 프로세스의 현재 상태 등을 확인할 수 있다. 프로세스의 상태를 나타내는 기호에는 다음과 같은 것들이 있다.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">기호</th>
+<th>의미</th>
+<th>상세</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>R</strong></td>
+<td>Running or Runnable</td>
+<td>Running or Ready</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>S</strong></td>
+<td>Sleeping</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>T</strong></td>
+<td>Traced or Stopped</td>
+<td>Blocked</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>D</strong></td>
+<td>Uninterruptible Sleep</td>
+<td>(주로) I/O</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>Z</strong></td>
+<td>Zombie</td>
+<td>*<em>중요</em></td>
+</tr>
+</tbody>
+</table>
+<p>Zombie 상태는, 프로세스 자체는 종료되었지만 관련 데이터가 아직 삭제되지 않은 상태를 말한다.</p>
+<p>그밖에 위 기호와 함께 표기해 추가적인 정보를 나타내 주는 기호들도 있다.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">기호</th>
+<th>의미</th>
+<th>상세</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>&lt;</strong></td>
+<td>High-priority task</td>
+<td>높은 우선순위</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>N</strong></td>
+<td>Low-priority task</td>
+<td>낮은 우선순위</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>s</strong></td>
+<td>Session leader</td>
+<td>Shell Program</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>+</strong></td>
+<td>Foreground Process Group</td>
+<td>포그라운드 프로세스</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>l</strong></td>
+<td>Multi-threaded</td>
+<td>멀티스레드 프로세스</td>
+</tr>
+</tbody>
+</table>
+<h4 id="프로세스-종료">프로세스 종료</h4>
+<p>프로세스는 다음과 같은 경우 종료된다.</p>
+<ul>
+<li>자발적(Voluntary) 종료 : 의도된 종료
+<ul>
+<li>Normal exit : 프로그램이 끝까지 모두 실행된 상태</li>
+<li>Error exit : 에러가 발생한 경우 코드 중간에 <code>exit()</code>를 사용해 종료</li>
+</ul>
+</li>
+<li>비자발적(Involuntary) 종료 : 의도되지 않은, 시스템에 의한 종료
+<ul>
+<li>Segmentation fault : 잘못된 메모리에 접근한 경우</li>
+<li>Protection fault : 접근해서는 안 되는 자원에 접근한 경우</li>
+<li>Exceed allocated resource : 할당된 자원을 초과해서 사용한 경우</li>
+<li>Killed by another process : 커널에서 프로그램 실행 도중 <code>^C</code> (Ctrl + C)를 입력하는 경우 등</li>
+</ul>
+</li>
+</ul>
+<p>또한 위에서도 언급했지만, 좀비 프로세스는 종료되고 난 후에도 관련 데이터가 삭제되지 않은 프로세스를 말한다.</p>
+<p>다음 글에서는 프로세스 관련 정보에 대해 알아본다.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/virtualization/">Virtualization</a>
+        
+            <a href="/tags/process/">Process</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/p/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C-%EA%B0%9C%EC%9A%94/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">운영체제 개요</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "everimind4-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (DISQUS) {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2021 Alan Choi
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.3.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

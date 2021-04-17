@@ -6,7 +6,312 @@
         <description>Recent content on Alan Choi</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Fri, 16 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://everimind4.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 17 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://everimind4.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>프로세스 (1)</title>
+        <link>https://everimind4.github.io/p/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-1/</link>
+        <pubDate>Sat, 17 Apr 2021 00:00:00 +0000</pubDate>
+        
+        <guid>https://everimind4.github.io/p/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-1/</guid>
+        <description>&lt;h2 id=&#34;virtualization-가상화&#34;&gt;Virtualization (가상화)&lt;/h2&gt;
+&lt;p&gt;가상화는 실제 대상을 가상의 대상으로 바꾸는 것을 의미한다.&lt;/p&gt;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 129; flex-basis: 310px&#34;&gt;
+		&lt;a href=&#34;https://everimind4.github.io/p/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-1/virtual_peach.png&#34; data-size=&#34;765x592&#34;&gt;&lt;img src=&#34;https://everimind4.github.io/p/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-1/virtual_peach.png&#34;
+				srcset=&#34;https://everimind4.github.io/p/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-1/virtual_peach_hu005ca562b0f176dda443f00f681e8352_273152_480x0_resize_box_2.png 480w, https://everimind4.github.io/p/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-1/virtual_peach_hu005ca562b0f176dda443f00f681e8352_273152_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;765&#34;
+				height=&#34;592&#34;
+				loading=&#34;lazy&#34;
+				alt=&#34;복숭아를 가상화해보자&#34;&gt;
+		&lt;/a&gt;
+		
+		&lt;figcaption&gt;복숭아를 가상화해보자&lt;/figcaption&gt;
+		
+	&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;실제로 존재하는 복숭아(Physical peach)는 하나이다. 그런데 여러  사용자가 이를 원하는 경우, &lt;strong&gt;복숭아를 가상화하여&lt;/strong&gt; 가상의 복숭아(Virtual peach)를 여러 개 만들 수 있다. 그리고 이것들을 복숭아를 원하는 사람들에게 나눠준다.&lt;/p&gt;
+&lt;p&gt;가상의 복숭아를 갖고 있는 사람들은 자기만 전용으로 사용하는 복숭아를 갖고 있다는 착각에 빠지는데, 그 이유는 다음과 같다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;자기가 가지고 있는 가상의 복숭아만 알 수 있다.&lt;/li&gt;
+&lt;li&gt;다른 사람들이 존재한다는 사실도 모른다.&lt;/li&gt;
+&lt;li&gt;따라서 다른 사람들의 가상의 복숭아를 알 수 없다.&lt;/li&gt;
+&lt;li&gt;심지어, 자신의 복숭아가 &lt;strong&gt;가상화되어 있다는 사실도 모른다&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;이것이 운영체제가 수행하는 가상화의 기본 아이디어이다.&lt;/p&gt;
+&lt;p&gt;그런데 &lt;strong&gt;실제 복숭아는 하나밖에 없는데&lt;/strong&gt;, 어떻게 전용의 복숭아를 가지고 있다는 환상이 유지될까? 다른 사람이 쓰면 다른 누군가는 쓰지 못하지 않을까?&lt;/p&gt;
+&lt;p&gt;결론부터 말하자면, &lt;strong&gt;&amp;ldquo;가상의 복숭아&amp;quot;라는 환상&lt;/strong&gt;은 각 사람이 &lt;strong&gt;항상 복숭아를 사용하지 않기 때문에 유지&lt;/strong&gt;될 수 있다.&lt;/p&gt;
+&lt;p&gt;각  사람은 자신이 가지고 있는 가상의 복숭아를 잠깐 사용하지만, 나머지 대부분의 시간은 낮잠을 자기도 하고, 다른 일을 하기도 한다.&lt;/p&gt;
+&lt;p&gt;운영체제는 중간에서 A라는 사람이 짧은 시간 동안 복숭아를 사용하고 나면 B에게 주고, B가 또 짧은 시간 동안 복숭아를 사용한 후에 C에게 복숭아를 주는 작업을 중간에서 수행한다.&lt;/p&gt;
+&lt;p&gt;즉, 각 사람이 복숭아를 사용하지 않을 때는 다른 사람이 사용할 수 있도록 이리저리 옮겨 준다.&lt;/p&gt;
+&lt;p&gt;물론 한 사람이 항상 복숭아를 사용하고 있다면 가상의 복숭아라는 환상이 깨지게 되겠지만, 실제로 각 사람이 복숭아를 필요로 하는 시간은 매우 짧기 때문에, 각 사람이 전용의 복숭아를 가지고 있다는 같은 환상을 잘 유지할 수 있다.&lt;/p&gt;
+&lt;p&gt;이로부터 알 수 있는 가상화의 특징을 정리해보면 다음과 같다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;각 사람에게 가상의 복숭아를 나눠 준다.&lt;/li&gt;
+&lt;li&gt;각 사람은 매우 짧은 시간동안 복숭아를 사용하므로, 자신만의 전용 복숭아를 가지고 있다는 착각에 빠진다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;당연하겠지만 실제로는 복숭아 대신 CPU, Memory 등을 가상화해서 제공한다.&lt;/p&gt;
+&lt;p&gt;먼저 CPU 가상화를 살펴볼텐데, CPU 가상화를 공부하려면 프로세스에 대해 알아야 한다.&lt;/p&gt;
+&lt;h2 id=&#34;process-프로세스&#34;&gt;Process (프로세스)&lt;/h2&gt;
+&lt;p&gt;프로세스는 &lt;strong&gt;프로그램이 실행 중인 상태&lt;/strong&gt;를 의미한다.&lt;/p&gt;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 208; flex-basis: 500px&#34;&gt;
+		&lt;a href=&#34;https://everimind4.github.io/p/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-1/OS_Architecture.png&#34; data-size=&#34;1413x678&#34;&gt;&lt;img src=&#34;https://everimind4.github.io/p/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-1/OS_Architecture.png&#34;
+				srcset=&#34;https://everimind4.github.io/p/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-1/OS_Architecture_hu24fb56ba589354b6da80b9a13fdacd95_272584_480x0_resize_box_2.png 480w, https://everimind4.github.io/p/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-1/OS_Architecture_hu24fb56ba589354b6da80b9a13fdacd95_272584_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;1413&#34;
+				height=&#34;678&#34;
+				loading=&#34;lazy&#34;
+				alt=&#34;운영체제와 외부 구조&#34;&gt;
+		&lt;/a&gt;
+		
+		&lt;figcaption&gt;운영체제와 외부 구조&lt;/figcaption&gt;
+		
+	&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;운영체제(Operating System)은 &lt;strong&gt;하드웨어 자원들을 관리&lt;/strong&gt;하고, 프로세스들이 **시스템 콜(System call)**을 통해 하드웨어 자원을 요청하면 &lt;strong&gt;해당 자원을 가상화하여 프로세스에게 제공&lt;/strong&gt;해 준다.&lt;/p&gt;
+&lt;h4 id=&#34;프로세스-작동-과정running-a-process&#34;&gt;프로세스 작동 과정(Running a Process)&lt;/h4&gt;
+&lt;p&gt;프로세스는 다음 과정을 반복해서 수행한다.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Fetch&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Decode&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Execute&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Update&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;인스트럭션 가져오기&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;가져온 인스트럭션 해석&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;해석한 결과를 실행&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;새로운 인스트럭션 업데이트&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;여러 개의 프로세스를 작동시키고 싶으면 가장 간단하게 사용 가능한 방법은 프로세스마다 CPU를 할당하는 것이다.&lt;/p&gt;
+&lt;p&gt;그러나 실행 가능한 프로세스의 수는 수백 가지인데, CPU의 갯수는 멀티코어 환경이라고 하더라도 2자릿수를 넘기기가 힘들다.&lt;/p&gt;
+&lt;p&gt;따라서 그 다음으로 생각할 수 있는 방식은 프로세스 간의 **인터리빙(Interleaving, 교차)**이다.&lt;/p&gt;
+&lt;p&gt;즉, 프로세스 A의 코드를 실행하다가 일정 시간이 지나면 잠시 멈춘 후 프로세스 B의 코드를 실행하고, 마찬가지로 일정 시간이 지나면 프로세스 C의 코드를 실행하는 것이다.&lt;/p&gt;
+&lt;p&gt;인터리빙 방식의 문제는 프로세스 A의 코드에서 프로세스 B의 코드로 직접 이동해야 한다는 점이다. 즉, &lt;strong&gt;전용의 CPU를 사용한다는 환상이 깨진다&lt;/strong&gt;. 다른 프로세스에게 CPU를 직접 양보해야 하기 때문이다.&lt;/p&gt;
+&lt;p&gt;운영체제도 일종의 프로그램이므로, 자신의 코드를 가지고 있다. 따라서 위와 같은 인터리빙 방식에서 운영체제를 거치도록 하여 인터리빙을 수행하면 가상화의 환상을 깨뜨리지 않고도 각 프로세스의 코드를 실행할 수 있다.&lt;/p&gt;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 247; flex-basis: 594px&#34;&gt;
+		&lt;a href=&#34;https://everimind4.github.io/p/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-1/Interleaving.png&#34; data-size=&#34;2081x840&#34;&gt;&lt;img src=&#34;https://everimind4.github.io/p/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-1/Interleaving.png&#34;
+				srcset=&#34;https://everimind4.github.io/p/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-1/Interleaving_hu435a6b213904d9adb59faf9ac55e62dd_595477_480x0_resize_box_2.png 480w, https://everimind4.github.io/p/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-1/Interleaving_hu435a6b213904d9adb59faf9ac55e62dd_595477_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;2081&#34;
+				height=&#34;840&#34;
+				loading=&#34;lazy&#34;
+				alt=&#34;왼쪽 : 직접 인터리빙 / 오른쪽 : OS 인터리빙&#34;&gt;
+		&lt;/a&gt;
+		
+		&lt;figcaption&gt;왼쪽 : 직접 인터리빙 / 오른쪽 : OS 인터리빙&lt;/figcaption&gt;
+		
+	&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;왼쪽 방식에서는 프로세스 A가 프로세스 B에게 CPU를 직접 양보했다면, 오른쪽 방식에서는 실행 중인 프로세스 A로부터 CPU를 운영체제가 받아서 프로세스 B에게 전달함으로써 가상화를 유지할 수 있다.&lt;/p&gt;
+&lt;p&gt;이렇게 CPU의 시간을 잘게 나누어서 각 프로세스에게 나눠 주는 방식을 &lt;strong&gt;Time Sharing&lt;/strong&gt;이라고 하며, 현대 대부분의 운영체제들이 채택하고 있는 방식이다.&lt;/p&gt;
+&lt;h4 id=&#34;프로세스란&#34;&gt;프로세스란?&lt;/h4&gt;
+&lt;p&gt;앞서 이야기했듯 &lt;strong&gt;프로세스는 실행 중인 프로그램을 의미&lt;/strong&gt;한다.&lt;/p&gt;
+&lt;p&gt;객체지향과 비교해서 생각하면 다음과 같은 비유가 가능하다.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Static&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Dynamic&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;클래스(Class)&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;인스턴스(Instance)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;프로그램&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;프로세스&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;프로세스의 특징은 다음과 같다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Protection의 기본적인 단위이다.  프로세스 단위로 자원을 할당하고, 해당 자원에는 다른 프로세스가 간섭할 수 없다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;PID&lt;/strong&gt;(Process ID)를 통해 식별할 수 있다.&lt;/li&gt;
+&lt;li&gt;프로세스의 동적인 상태를 정의하는, 다음과 같은 정보들을 포함한다.
+&lt;ul&gt;
+&lt;li&gt;CPU context (Program counter, Stack pointer)&lt;/li&gt;
+&lt;li&gt;OS resources (address space, open files, etc.)&lt;/li&gt;
+&lt;li&gt;Other information (PID, state, owner, etc.)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;프로세스의-실행-과정-process-creation&#34;&gt;프로세스의 실행 과정 (Process Creation)&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;프로그램 코드를 메모리에 로드한다.
+&lt;ul&gt;
+&lt;li&gt;메모리 내 프로세스별로 할당된 주소 공간에 로드한다.&lt;/li&gt;
+&lt;li&gt;메모리에 로드 시, 프로그램의 코드를 한번에 전부 로드하는 것이 아닌 필요한 부분만 그때그때 로드한다(Lazily Load) : 메모리 가상화의 Demand Paging 기법&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;프로그램을 실행하기 위한 런타임 스택을 할당한다.
+&lt;ul&gt;
+&lt;li&gt;스택에는 지역 변수, 함수의 매개변수, 반환 주소 등이 저장된다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;동적 할당을 위한 Heap 공간을 할당한다.
+&lt;ul&gt;
+&lt;li&gt;프로세스별로 동적인 공간 할당 요청이 있을 경우 Heap 공간에서 메모리를 할당한다.&lt;/li&gt;
+&lt;li&gt;C에서는 &lt;code&gt;malloc()&lt;/code&gt;을 사용해 메모리를 할당받고 &lt;code&gt;free()&lt;/code&gt;를 사용해 할당을 해제한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS에 의해 초기화 작업이 수행된다.
+&lt;ul&gt;
+&lt;li&gt;모든 프로그램은 기본적으로 3개의 오픈 파일 디스크립터를 만들어 준다.
+&lt;ul&gt;
+&lt;li&gt;표준 입력, 표준 출력, 표준 에러&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;CPU의 제어권이 OS로부터 새로 생성된 프로세스에게 넘어간다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;프로세스의-상태-process-states&#34;&gt;프로세스의 상태 (Process States)&lt;/h4&gt;
+&lt;p&gt;프로세스는 다음 3가지 중 하나의 상태를 갖는다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;실행 중 (Running) : CPU를 할당받아 실행 중인 상태&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;대기 중 (Ready) : 실행될 준비는 끝냈지만 CPU를 할당받지 못한 상태&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;정지 (Blocked) : 모종의 이유로 실행이 잠시 중단된 상태&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;입출력과 같은 오래 걸리는 작업을 수행하는 경우&lt;/li&gt;
+&lt;li&gt;사용자 입력과 같은 이벤트를 기다리고 있는 경우&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 158; flex-basis: 381px&#34;&gt;
+		&lt;a href=&#34;https://everimind4.github.io/p/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-1/Process_States.png&#34; data-size=&#34;1287x810&#34;&gt;&lt;img src=&#34;https://everimind4.github.io/p/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-1/Process_States.png&#34;
+				srcset=&#34;https://everimind4.github.io/p/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-1/Process_States_hu8b45775c9d2ffb836fdbf13eccb0aea7_276731_480x0_resize_box_2.png 480w, https://everimind4.github.io/p/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-1/Process_States_hu8b45775c9d2ffb836fdbf13eccb0aea7_276731_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;1287&#34;
+				height=&#34;810&#34;
+				loading=&#34;lazy&#34;
+				alt=&#34;프로세스 간 상태 전이 관계도&#34;&gt;
+		&lt;/a&gt;
+		
+		&lt;figcaption&gt;프로세스 간 상태 전이 관계도&lt;/figcaption&gt;
+		
+	&lt;/figure&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;프로세스는 기본적으로 Ready 상태와 Running 상태를 계속 오가며 실행된다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;프로세스가 처음 생성되면 Ready 상태가 된다.&lt;/li&gt;
+&lt;li&gt;CPU를 할당받아 Running 상태가 된다.&lt;/li&gt;
+&lt;li&gt;정해진 할당 시간(Time slice)을 모두 사용하면 Ready 상태가 된다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Running 상태에서 입출력(I/O) 혹은 사용자 Event를 기다려야 하는 경우 Blocked 상태가 된다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Blocked 상태에서 필요한 작업을 다 처리하면 Ready 상태가 된다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;다시 Ready와 Running 두 상태의 전이를 반복한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;linux에서의-프로세스&#34;&gt;Linux에서의 프로세스&lt;/h4&gt;
+&lt;p&gt;리눅스 Shell에서 &lt;code&gt;ps ax&lt;/code&gt;명령어를 입력하면 현재 실행 중인 프로세스 목록을 확인할 수 있다.&lt;/p&gt;
+&lt;p&gt;PID, 프로세스의 현재 상태 등을 확인할 수 있다. 프로세스의 상태를 나타내는 기호에는 다음과 같은 것들이 있다.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;기호&lt;/th&gt;
+&lt;th&gt;의미&lt;/th&gt;
+&lt;th&gt;상세&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;strong&gt;R&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Running or Runnable&lt;/td&gt;
+&lt;td&gt;Running or Ready&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;strong&gt;S&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Sleeping&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;strong&gt;T&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Traced or Stopped&lt;/td&gt;
+&lt;td&gt;Blocked&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;strong&gt;D&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Uninterruptible Sleep&lt;/td&gt;
+&lt;td&gt;(주로) I/O&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;strong&gt;Z&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Zombie&lt;/td&gt;
+&lt;td&gt;*&lt;em&gt;중요&lt;/em&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Zombie 상태는, 프로세스 자체는 종료되었지만 관련 데이터가 아직 삭제되지 않은 상태를 말한다.&lt;/p&gt;
+&lt;p&gt;그밖에 위 기호와 함께 표기해 추가적인 정보를 나타내 주는 기호들도 있다.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;기호&lt;/th&gt;
+&lt;th&gt;의미&lt;/th&gt;
+&lt;th&gt;상세&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;strong&gt;&amp;lt;&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;High-priority task&lt;/td&gt;
+&lt;td&gt;높은 우선순위&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;strong&gt;N&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Low-priority task&lt;/td&gt;
+&lt;td&gt;낮은 우선순위&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;strong&gt;s&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Session leader&lt;/td&gt;
+&lt;td&gt;Shell Program&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;strong&gt;+&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Foreground Process Group&lt;/td&gt;
+&lt;td&gt;포그라운드 프로세스&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;strong&gt;l&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Multi-threaded&lt;/td&gt;
+&lt;td&gt;멀티스레드 프로세스&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&#34;프로세스-종료&#34;&gt;프로세스 종료&lt;/h4&gt;
+&lt;p&gt;프로세스는 다음과 같은 경우 종료된다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;자발적(Voluntary) 종료 : 의도된 종료
+&lt;ul&gt;
+&lt;li&gt;Normal exit : 프로그램이 끝까지 모두 실행된 상태&lt;/li&gt;
+&lt;li&gt;Error exit : 에러가 발생한 경우 코드 중간에 &lt;code&gt;exit()&lt;/code&gt;를 사용해 종료&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;비자발적(Involuntary) 종료 : 의도되지 않은, 시스템에 의한 종료
+&lt;ul&gt;
+&lt;li&gt;Segmentation fault : 잘못된 메모리에 접근한 경우&lt;/li&gt;
+&lt;li&gt;Protection fault : 접근해서는 안 되는 자원에 접근한 경우&lt;/li&gt;
+&lt;li&gt;Exceed allocated resource : 할당된 자원을 초과해서 사용한 경우&lt;/li&gt;
+&lt;li&gt;Killed by another process : 커널에서 프로그램 실행 도중 &lt;code&gt;^C&lt;/code&gt; (Ctrl + C)를 입력하는 경우 등&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;또한 위에서도 언급했지만, 좀비 프로세스는 종료되고 난 후에도 관련 데이터가 삭제되지 않은 프로세스를 말한다.&lt;/p&gt;
+&lt;p&gt;다음 글에서는 프로세스 관련 정보에 대해 알아본다.&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>운영체제 개요</title>
         <link>https://everimind4.github.io/p/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C-%EA%B0%9C%EC%9A%94/</link>
         <pubDate>Fri, 16 Apr 2021 00:00:00 +0000</pubDate>
