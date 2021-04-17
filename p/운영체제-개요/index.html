@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='가상화, 병행성, 지속성'><title>운영체제 개요</title>
+
+<link rel='canonical' href='https://everimind4.github.io/p/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C-%EA%B0%9C%EC%9A%94/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='운영체제 개요'>
+<meta property='og:description' content='가상화, 병행성, 지속성'>
+<meta property='og:url' content='https://everimind4.github.io/p/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C-%EA%B0%9C%EC%9A%94/'>
+<meta property='og:site_name' content='Alan Choi'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='OS' /><meta property='article:published_time' content='2021-04-16T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-04-16T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="운영체제 개요">
+<meta name="twitter:description" content="가상화, 병행성, 지속성">
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-190256788-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container main-container flex on-phone--column extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+                    <img src="https://raw.githubusercontent.com/everimind4/everimind4.github.io/main/Sunrise_Bulb_Square.jpg" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+
+                
+                    <span class="emoji">🤔</span>
+                
+            </figure>
+        
+        <h1 class="site-name"><a href="https://everimind4.github.io/">Alan Choi</a></h1>
+        <h2 class="site-description">Linux Kernel, SSD, Operating System</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://everimind4.github.io/" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/os/" style="background-color: #94C227; color: #fff;">
+                Operating System
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/p/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C-%EA%B0%9C%EC%9A%94/">운영체제 개요</a>
+    </h2>
+
+    
+    <h3 class="article-subtitle">
+        가상화, 병행성, 지속성
+    </h3>
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">Apr 16, 2021</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h2 id="운영체제의-기능">운영체제의 기능</h2>
+<p>프로그램은 <strong>CPU가 수행하는 인스트럭션(Instruction, 명령어)들의 목록</strong>이라고 생각할 수 있다.</p>
+<p>즉, 프로그램을 실행한다는 것은 인스트럭션을 수행하는 것이다.</p>
+<p>따라서 프로그램이 실행될 때는 다음과 같은 과정을 거치게 된다.</p>
+<ol>
+<li>
+<p><strong>Fetch</strong> : 메모리에서 인스트럭션을 하나 가져온다.</p>
+</li>
+<li>
+<p><strong>Decode</strong> : 가지고 온 인스트럭션이 어떤 종류인지를 알아낸다.</p>
+</li>
+<li>
+<p><strong>Execute</strong> : 인스트럭션을 실제로 수행한다.</p>
+<p>여기까지 완료하면 하나의 인스트럭션을 수행한 것이다.</p>
+</li>
+<li>
+<p><strong>다음 인스트럭션</strong>을 찾는다.</p>
+</li>
+</ol>
+<p>프로그램이 실행되고 종료되기까지 이 4개의 과정이 계속 반복된다.</p>
+<p><strong>운영체제는 프로그램이 원활하게 실행될 수 있도록 환경을 제공</strong>하는 역할을 한다.</p>
+<ul>
+<li>프로그램을 실행하기 쉽도록 해 준다.</li>
+<li>프로그램들이 메모리를 공유할 수 있도록 해 준다.</li>
+<li>프로그램들이 외부 장치들과 정보를 주고받을 수 있도록 해 준다.</li>
+</ul>
+<p>즉, 시스템이 올바르고 효율적으로 동작할 수 있도록 만드는 것이 OS의 역할이다.</p>
+<p>운영체제의 기능과 역할은 크게 3가지이다.</p>
+<ul>
+<li><strong>Virtualization</strong> (가상화)</li>
+<li><strong>Concurrency</strong> (병행성)</li>
+<li><strong>Persistency</strong> (지속성)</li>
+</ul>
+<p>지금부터 각각의 개념에 대해 간단하게 살펴본다.</p>
+<h2 id="virtualization-가상화">Virtualization (가상화)</h2>
+<p>운영체제의 가장 중요한 역할 중 하나는 시스템을 <strong>가상화</strong>하여 프로그램에게 제공하는 것이다.</p>
+<p>구체적으로는 시스템의 물리적 자원(Physical Resource)인 <strong>하드웨어(Hardward)를 프로그램이 사용하기 편리하도록 가상화하여 제공</strong>하는 것을 의미한다.</p>
+<p>가상화된 형태는 프로그램이 사용하기 편리하다. 실제 하드웨어의 구조 및 복잡한 작동 방식, 하드웨어 공유 시 발생하는 문제 등을 신경쓰지 않아도 되기 때문이다.</p>
+<p>이러한 특징 때문에 운영체제를 <strong>Virtual Machine</strong>이라고 부르기도 한다.</p>
+<h4 id="system-call">System call</h4>
+<p>시스템 자원은 가상화되어 있으므로, 프로그램들은 시스템 자원에 직접 접근할 수 없다. 따라서 프로그램들은 시스템 자원을 사용하려면 운영체제에게 요청해야 한다.</p>
+<p>운영체제에게 시스템 자원을 요청하기 위해 특수한 함수인 <strong>System call</strong>(시스템 콜)을 사용한다.</p>
+<p>운영체제는 프로그램들이 사용할 수 있는 다양한 시스템 콜을 제공한다.</p>
+<h4 id="resource-manager">Resource manager</h4>
+<p>운영체제는 CPU, Memory, Disk 등의 시스템 자원을 (가상화할 뿐만 아니라) 관리하는 역할을 한다.</p>
+<p>여러 프로그램들이 동시에 실행될 수 있도록 <strong>CPU를 공유</strong>하기도 하고, 각 프로그램이 사용할 수 있도록 <strong>메모리 및 디스크를 공유</strong>해 주기도 한다.</p>
+<p>즉, OS가 여러 프로그램들 사이에서 시스템 자원을 분배하는 <strong>중재자</strong> 역할을 한다.</p>
+<h4 id="cpu-가상화">CPU 가상화</h4>
+<p>실행하고자 하는 프로그램의 개수에 비해 CPU의 개수는 너무나 적다.</p>
+<p>하지만 CPU가 단 하나만 존재하는 경우에도, CPU 가상화를 통해 여러 프로그램이 적은 수의 CPU를 동시에 사용할 수 있다.</p>
+<p>OS는 각 프로그램들에게 <strong>자신만의 전용 CPU를 가지고 있다는 환상을 제공</strong>해 준다. 즉, 하나의 프로세스로 여러 프로그램을 실행하더라도 각 프로그램들은 자신만의 CPU를 가지고 있는 것처럼 작동한다.</p>
+<h4 id="메모리-가상화">메모리 가상화</h4>
+<p>CPU와 마찬가지로 실제 물리적인 메모리를 여러 프로그램이 사용할 수 있게 해 주는 것이 메모리 가상화이다.</p>
+<p>실제 메모리는 정보를 저장 가능한 바이트(Byte)들로 이루어진 저장 공간이다. 즉, **바이트의 배열(An array of Bytes)**로 생각할 수 있다. 각 바이트에는 고유한 번호가 존재하고, 이를 **주소(Address)**라고 한다. 이 주소를 가지고 메모리를 읽고 쓸 수 있다.</p>
+<p>OS는 각 프로그램들에게 자신만의 전용 메모리를 가지고 있다는 환상을 제공해 준다.</p>
+<p>하지만 각 프로그램에는 <strong>실제 주소(Physical Address)가 아닌 가상 주소(Virtual Address)가 제공</strong>된다.</p>
+<p>따라서 현재 실행 중인 프로그램들이 모두 동일한 주소에 접근하는 것 처럼 보이는 경우에도, 실제로는 다른 주소에 접근하게 된다.</p>
+<p>OS가 중간에서 가상 주소를 실제 주소로 연결해 주기 때문에, 이러한 경우에도 프로그램들은 문제 없이 작동할 수 있다.</p>
+<h2 id="concurrency-병행성">Concurrency (병행성)</h2>
+<p>병행성은 여러 프로그램들이 동시에 실행되어야 하기 때문에 발생하는 특징이다.</p>
+<p>다음과 같은 코드를 통해 병행성의 특징을 볼 수 있다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="c1">// thread.c
+</span><span class="c1"></span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="kt">int</span> <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">loops</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="o">*</span><span class="nf">worker</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">arg</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">loops</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="n">counter</span><span class="o">++</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    <span class="p">.</span> <span class="p">.</span> <span class="p">.</span> <span class="c1">// Exception Handler
+</span><span class="c1"></span>    <span class="n">loops</span> <span class="o">=</span> <span class="n">atoi</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;Initial Value : %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">counter</span><span class="p">);</span>
+    
+    <span class="n">pthread_t</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">;</span>
+    <span class="n">Pthread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">p1</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">worker</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+    <span class="n">Pthread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">p2</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">worker</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+    <span class="n">Pthread_join</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+    <span class="n">Pthread_join</span><span class="p">(</span><span class="n">p2</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+    
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;Final Value : %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">counter</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><p><code>worker</code> 함수는 전역 변수인 <code>counter</code>에 저장된 값을 1씩 증가시키는 함수이다.</p>
+<p><code>worker</code> 함수를 <code>main</code> 함수 내에서 멀티스레드(Multi-thread)를 활용해 동시에 1000번씩 작동시킨다고 생각해 보자.</p>
+<pre><code>$ gcc -o thread thread.c -Wall -pthread
+$ ./thread 1000
+Initial Value : 0
+Final Value : 2000
+</code></pre><p>당연한 결과이다. 하지만 <code>loops</code>의 값이 커지게 되면 이상한 현상이 발생한다.</p>
+<pre><code>$ ./thread 100000
+Initial Value : 0
+Final Value : 106296
+$ ./thread 100000
+Initial Value : 0
+Final Value : 107258
+</code></pre><p>예상대로라면 <strong>200000</strong>이 출력되어야 하지만, 그에 훨씬 못 미치는 값이 출력되는 것을 볼 수 있다. 더욱 심각한 것은, 조건 분기 등이 없음에도 <strong>매번 값이 다르게 출력</strong>된다는 사실이다. 이는 대표적인 병행성 문제이다.</p>
+<p>왜 이런 현상이 발생하는지는 내부 인스트럭션의 구조를 보면 알 수 있다. <code>worker</code> 함수는 최소 3개의 인스트럭션으로 이루어져 있다.</p>
+<ul>
+<li><strong>Load</strong> : 메모리에서 <code>counter</code> 변수의 값을 읽는다.</li>
+<li><strong>Increment</strong> : 해당 변수의 값을 1 증가시킨다.</li>
+<li><strong>Store</strong> : 증가시킨 값을 다시 원래 위치에 저장한다.</li>
+</ul>
+<p>문제는 두 스레드를 통해 실행되는 이 인스트럭션들이 서로 중첩되는 경우이다. 각 스레드의 인스트럭션들은 개별 스레드 내부에서는 순서대로 실행되지만, 멀티스레드의 경우 서로 끼어들 수 있다.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">스레드</th>
+<th>인스트럭션</th>
+<th>수행하는 기능</th>
+<th style="text-align:center">counter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>1</strong></td>
+<td>Load</td>
+<td>counter 변수를 불러온다</td>
+<td style="text-align:center"><strong>0</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><em>2</em></td>
+<td>Load</td>
+<td>counter 변수를 불러온다</td>
+<td style="text-align:center"><em>0</em></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>1</strong></td>
+<td>Increment</td>
+<td>값을 1 증가시킨다 (<code>0</code> → <code>1</code>)</td>
+<td style="text-align:center"><strong>0</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>1</strong></td>
+<td>Store</td>
+<td>증가시킨 값 <code>1</code>을 counter 변수에 저장한다</td>
+<td style="text-align:center"><strong>1</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><em>2</em></td>
+<td>Increment</td>
+<td>값을 1 증가시킨다 (<code>0</code> → <code>1</code>)</td>
+<td style="text-align:center"><em>1</em></td>
+</tr>
+<tr>
+<td style="text-align:center"><em>2</em></td>
+<td>Store</td>
+<td>증가시킨 값 <code>1</code>을 counter 변수에 저장한다</td>
+<td style="text-align:center"><em>1</em></td>
+</tr>
+</tbody>
+</table>
+<p>실제로 개별 스레드에서 한 번씩, 반복문이 총 2회 실행되었지만 내부 인스트럭션들이 중첩되는 바람에 의도와 다르게 실행되었음을 알 수 있다.</p>
+<p>이를 방지하기 위해서는 공유된 자원을 읽어와서 값을 증가시키고 저장하기까지의, 위에 나열한 최소 3개의 <strong>인스트럭션들이 한 묶음으로(Atomic) 실행</strong>되어야 한다.</p>
+<h2 id="persistency-지속성">Persistency (지속성)</h2>
+<p>일반적으로 메인 메모리로 사용하는 DRAM은 휘발성(volatile) 저장 장치이다. 휘발성은 전원을 차단하면 저장된 정보가 삭제되는 특징을 말한다.</p>
+<p>따라서 데이터를 보존하기 위해 하드웨어나 소프트웨어의 도움을 받는다.</p>
+<ul>
+<li>하드웨어(Hardware) : 입출력 장치인 하드 디스크 드라이브(HDD), 솔리드-스테이트 드라이브(SDD)</li>
+<li>소프트웨어(Software) : 운영체제의 파일 시스템(File System)</li>
+</ul>
+<p>운영체제는 시스템에 연결된 HDD나 SSD와 같은 저장 공간을 추상화하여 제공하며, 저장된 파일을 관리하는 **파일 시스템(File System)**을 갖고 있다.</p>
+<p>프로그램이 파일을 열거나 수정해 저장하는 등의 파일 관련 작업을 수행하려면 시스템 콜을 요청해야 한다.</p>
+<p>지속성(Persistency)은 디렉토리와 파일로 추상화된 공간을 통해 데이터를 보존하는 것을 말한다.</p>
+<p>운영체제가 갖는 지속성(Persistency)의 특징은 다음과 같다.</p>
+<ul>
+<li>프로그램의 요청을 받아 어느 위치에 있는 파일을 수정하거나 새로운 파일을 작성할 지를 결정한다.</li>
+<li>파일시스템은 파일 작성 중 오류가 발생한 경우 <strong>Journaling</strong>이나 <strong>Copy-on-Write</strong>등의 방식을 사용해 오류를 복구한다.</li>
+</ul>
+<h3 id="운영체제-설계-목표">운영체제 설계 목표</h3>
+<ul>
+<li>Abstraction : 추상화 및 가상화를 통해 사용 편의성을 더한다.</li>
+<li>High Performance : 성능이 뛰어나야 한다.좋아야 한다. 하드웨어에 OS가 설치된 후 그 위에 다른 모든 프로그램들이 설치되기 때문에, OS의 성능이 비효율적인 경우 다른 모든 프로그램들의 성능이 저하된다.</li>
+<li>Protection (Isolation) : <strong>프로그램 간의 간섭을 방지</strong>해야 한다. 특정 프로그램이 다른 프로그램의 데이터를 훼손하거나 덮어쓰는 경우를 막을 수 있어야 한다.</li>
+<li>Reliability : OS는 <strong>항상 작동</strong>해야 한다. OS가 작동을 멈추면 전체 프로그램들도 작동할 수 없게 되고, 컴퓨터를 사용할 수 없게 된다.</li>
+<li>Others : Energy-efficiency, Security, Mobility, . . .</li>
+</ul>
+<p>앞으로 위에서 살펴본 3가지 요소인 Virtualization, Concurrency, Persistency에 관한 내용을 주제별로 살펴볼 예정이다.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/os/">OS</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+</aside>
+
+
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "everimind4-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (DISQUS) {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2021 Alan Choi
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.3.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

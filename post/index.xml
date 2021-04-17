@@ -6,7 +6,24 @@
     <description>Recent content in Posts on Alan Choi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 05 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://everimind4.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 16 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://everimind4.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>운영체제 개요</title>
+      <link>https://everimind4.github.io/p/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C-%EA%B0%9C%EC%9A%94/</link>
+      <pubDate>Fri, 16 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://everimind4.github.io/p/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C-%EA%B0%9C%EC%9A%94/</guid>
+      <description>운영체제의 기능 프로그램은 CPU가 수행하는 인스트럭션(Instruction, 명령어)들의 목록이라고 생각할 수 있다.
+즉, 프로그램을 실행한다는 것은 인스트럭션을 수행하는 것이다.
+따라서 프로그램이 실행될 때는 다음과 같은 과정을 거치게 된다.
+  Fetch : 메모리에서 인스트럭션을 하나 가져온다.
+  Decode : 가지고 온 인스트럭션이 어떤 종류인지를 알아낸다.
+  Execute : 인스트럭션을 실제로 수행한다.
+여기까지 완료하면 하나의 인스트럭션을 수행한 것이다.
+  다음 인스트럭션을 찾는다.
+  프로그램이 실행되고 종료되기까지 이 4개의 과정이 계속 반복된다.</description>
+    </item>
+    
     <item>
       <title>제어문 (1)</title>
       <link>https://everimind4.github.io/p/%EC%A0%9C%EC%96%B4%EB%AC%B8-1/</link>
