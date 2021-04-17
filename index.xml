@@ -318,6 +318,15 @@
         
         <guid>https://everimind4.github.io/p/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C-%EA%B0%9C%EC%9A%94/</guid>
         <description>&lt;h2 id=&#34;운영체제의-기능&#34;&gt;운영체제의 기능&lt;/h2&gt;
+&lt;p&gt;운영체제는 &lt;strong&gt;프로그램이 잘 실행되도록 돕는 프로그램&lt;/strong&gt;이다. 따라서 다음과 같은 기능들을 갖는다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;프로그램을 실행하기 쉽도록 해 준다.&lt;/li&gt;
+&lt;li&gt;프로그램들이 메모리를 공유할 수 있도록 해 준다.&lt;/li&gt;
+&lt;li&gt;프로그램들이 외부 장치들과 정보를 주고받을 수 있도록 해 준다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;즉, 시스템이 올바르고 효율적으로 동작할 수 있도록 만드는 것이 OS의 역할이다.&lt;/p&gt;
+&lt;p&gt;여기서 잠깐 프로그램이 무엇인가에 대해 간단하게 짚고 넘어가자.&lt;/p&gt;
+&lt;h4 id=&#34;프로그램이란&#34;&gt;프로그램이란?&lt;/h4&gt;
 &lt;p&gt;프로그램은 &lt;strong&gt;CPU가 수행하는 인스트럭션(Instruction, 명령어)들의 목록&lt;/strong&gt;이라고 생각할 수 있다.&lt;/p&gt;
 &lt;p&gt;즉, 프로그램을 실행한다는 것은 인스트럭션을 수행하는 것이다.&lt;/p&gt;
 &lt;p&gt;따라서 프로그램이 실행될 때는 다음과 같은 과정을 거치게 된다.&lt;/p&gt;
@@ -337,20 +346,14 @@
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;프로그램이 실행되고 종료되기까지 이 4개의 과정이 계속 반복된다.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;운영체제는 프로그램이 원활하게 실행될 수 있도록 환경을 제공&lt;/strong&gt;하는 역할을 한다.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;프로그램을 실행하기 쉽도록 해 준다.&lt;/li&gt;
-&lt;li&gt;프로그램들이 메모리를 공유할 수 있도록 해 준다.&lt;/li&gt;
-&lt;li&gt;프로그램들이 외부 장치들과 정보를 주고받을 수 있도록 해 준다.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;즉, 시스템이 올바르고 효율적으로 동작할 수 있도록 만드는 것이 OS의 역할이다.&lt;/p&gt;
+&lt;p&gt;이러한 과정을 거쳐 프로그램이 실행되는 동안, &lt;strong&gt;운영체제는 프로그램이 원활하게 실행될 수 있도록 환경을 제공&lt;/strong&gt;하는 역할을 한다.&lt;/p&gt;
 &lt;p&gt;운영체제의 기능과 역할은 크게 3가지이다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Virtualization&lt;/strong&gt; (가상화)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Concurrency&lt;/strong&gt; (병행성)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Persistency&lt;/strong&gt; (지속성)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;지금부터 각각의 개념에 대해 간단하게 살펴본다.&lt;/p&gt;
+&lt;p&gt;지금부터 각각의 개념에 대해 간단하게 살펴보도록 하자.&lt;/p&gt;
 &lt;h2 id=&#34;virtualization-가상화&#34;&gt;Virtualization (가상화)&lt;/h2&gt;
 &lt;p&gt;운영체제의 가장 중요한 역할 중 하나는 시스템을 &lt;strong&gt;가상화&lt;/strong&gt;하여 프로그램에게 제공하는 것이다.&lt;/p&gt;
 &lt;p&gt;구체적으로는 시스템의 물리적 자원(Physical Resource)인 &lt;strong&gt;하드웨어(Hardward)를 프로그램이 사용하기 편리하도록 가상화하여 제공&lt;/strong&gt;하는 것을 의미한다.&lt;/p&gt;
@@ -377,7 +380,7 @@
 &lt;p&gt;OS가 중간에서 가상 주소를 실제 주소로 연결해 주기 때문에, 이러한 경우에도 프로그램들은 문제 없이 작동할 수 있다.&lt;/p&gt;
 &lt;h2 id=&#34;concurrency-병행성&#34;&gt;Concurrency (병행성)&lt;/h2&gt;
 &lt;p&gt;병행성은 여러 프로그램들이 동시에 실행되어야 하기 때문에 발생하는 특징이다.&lt;/p&gt;
-&lt;p&gt;다음과 같은 코드를 통해 병행성의 특징을 볼 수 있다.&lt;/p&gt;
+&lt;p&gt;다음 코드를 통해 병행성의 특징을 알 수 있다.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// thread.c
 &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
 &lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;stdlib.h&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
@@ -501,7 +504,7 @@ Final Value : 107258
 &lt;li&gt;Reliability : OS는 &lt;strong&gt;항상 작동&lt;/strong&gt;해야 한다. OS가 작동을 멈추면 전체 프로그램들도 작동할 수 없게 되고, 컴퓨터를 사용할 수 없게 된다.&lt;/li&gt;
 &lt;li&gt;Others : Energy-efficiency, Security, Mobility, . . .&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;앞으로 위에서 살펴본 3가지 요소인 Virtualization, Concurrency, Persistency에 관한 내용을 주제별로 살펴볼 예정이다.&lt;/p&gt;
+&lt;p&gt;앞으로 운영체제의 3요소인 Virtualization, Concurrency, Persistency에 관한 내용을 주제별로 다룰 예정이다.&lt;/p&gt;
 </description>
         </item>
         <item>

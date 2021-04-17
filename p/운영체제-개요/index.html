@@ -223,6 +223,15 @@ if (!doNotTrack) {
 
     <section class="article-content">
     <h2 id="운영체제의-기능">운영체제의 기능</h2>
+<p>운영체제는 <strong>프로그램이 잘 실행되도록 돕는 프로그램</strong>이다. 따라서 다음과 같은 기능들을 갖는다.</p>
+<ul>
+<li>프로그램을 실행하기 쉽도록 해 준다.</li>
+<li>프로그램들이 메모리를 공유할 수 있도록 해 준다.</li>
+<li>프로그램들이 외부 장치들과 정보를 주고받을 수 있도록 해 준다.</li>
+</ul>
+<p>즉, 시스템이 올바르고 효율적으로 동작할 수 있도록 만드는 것이 OS의 역할이다.</p>
+<p>여기서 잠깐 프로그램이 무엇인가에 대해 간단하게 짚고 넘어가자.</p>
+<h4 id="프로그램이란">프로그램이란?</h4>
 <p>프로그램은 <strong>CPU가 수행하는 인스트럭션(Instruction, 명령어)들의 목록</strong>이라고 생각할 수 있다.</p>
 <p>즉, 프로그램을 실행한다는 것은 인스트럭션을 수행하는 것이다.</p>
 <p>따라서 프로그램이 실행될 때는 다음과 같은 과정을 거치게 된다.</p>
@@ -242,20 +251,14 @@ if (!doNotTrack) {
 </li>
 </ol>
 <p>프로그램이 실행되고 종료되기까지 이 4개의 과정이 계속 반복된다.</p>
-<p><strong>운영체제는 프로그램이 원활하게 실행될 수 있도록 환경을 제공</strong>하는 역할을 한다.</p>
-<ul>
-<li>프로그램을 실행하기 쉽도록 해 준다.</li>
-<li>프로그램들이 메모리를 공유할 수 있도록 해 준다.</li>
-<li>프로그램들이 외부 장치들과 정보를 주고받을 수 있도록 해 준다.</li>
-</ul>
-<p>즉, 시스템이 올바르고 효율적으로 동작할 수 있도록 만드는 것이 OS의 역할이다.</p>
+<p>이러한 과정을 거쳐 프로그램이 실행되는 동안, <strong>운영체제는 프로그램이 원활하게 실행될 수 있도록 환경을 제공</strong>하는 역할을 한다.</p>
 <p>운영체제의 기능과 역할은 크게 3가지이다.</p>
 <ul>
 <li><strong>Virtualization</strong> (가상화)</li>
 <li><strong>Concurrency</strong> (병행성)</li>
 <li><strong>Persistency</strong> (지속성)</li>
 </ul>
-<p>지금부터 각각의 개념에 대해 간단하게 살펴본다.</p>
+<p>지금부터 각각의 개념에 대해 간단하게 살펴보도록 하자.</p>
 <h2 id="virtualization-가상화">Virtualization (가상화)</h2>
 <p>운영체제의 가장 중요한 역할 중 하나는 시스템을 <strong>가상화</strong>하여 프로그램에게 제공하는 것이다.</p>
 <p>구체적으로는 시스템의 물리적 자원(Physical Resource)인 <strong>하드웨어(Hardward)를 프로그램이 사용하기 편리하도록 가상화하여 제공</strong>하는 것을 의미한다.</p>
@@ -282,7 +285,7 @@ if (!doNotTrack) {
 <p>OS가 중간에서 가상 주소를 실제 주소로 연결해 주기 때문에, 이러한 경우에도 프로그램들은 문제 없이 작동할 수 있다.</p>
 <h2 id="concurrency-병행성">Concurrency (병행성)</h2>
 <p>병행성은 여러 프로그램들이 동시에 실행되어야 하기 때문에 발생하는 특징이다.</p>
-<p>다음과 같은 코드를 통해 병행성의 특징을 볼 수 있다.</p>
+<p>다음 코드를 통해 병행성의 특징을 알 수 있다.</p>
 <div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="c1">// thread.c
 </span><span class="c1"></span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 </span><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
@@ -406,7 +409,7 @@ Final Value : 107258
 <li>Reliability : OS는 <strong>항상 작동</strong>해야 한다. OS가 작동을 멈추면 전체 프로그램들도 작동할 수 없게 되고, 컴퓨터를 사용할 수 없게 된다.</li>
 <li>Others : Energy-efficiency, Security, Mobility, . . .</li>
 </ul>
-<p>앞으로 위에서 살펴본 3가지 요소인 Virtualization, Concurrency, Persistency에 관한 내용을 주제별로 살펴볼 예정이다.</p>
+<p>앞으로 운영체제의 3요소인 Virtualization, Concurrency, Persistency에 관한 내용을 주제별로 다룰 예정이다.</p>
 
 </section>
 
