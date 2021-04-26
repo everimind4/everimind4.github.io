@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='함수, 모듈'><title>제어문 (2)</title>
+
+<link rel='canonical' href='https://everimind4.github.io/p/%EC%A0%9C%EC%96%B4%EB%AC%B8-2/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='제어문 (2)'>
+<meta property='og:description' content='함수, 모듈'>
+<meta property='og:url' content='https://everimind4.github.io/p/%EC%A0%9C%EC%96%B4%EB%AC%B8-2/'>
+<meta property='og:site_name' content='Alan Choi'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Python' /><meta property='article:published_time' content='2021-04-26T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-04-26T00:00:00&#43;00:00'/><meta property='og:image' content='https://everimind4.github.io/p/%EC%A0%9C%EC%96%B4%EB%AC%B8-2/cover.png' />
+<meta name="twitter:title" content="제어문 (2)">
+<meta name="twitter:description" content="함수, 모듈"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://everimind4.github.io/p/%EC%A0%9C%EC%96%B4%EB%AC%B8-2/cover.png' />
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-190256788-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container main-container flex on-phone--column extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+                    <img src="https://raw.githubusercontent.com/everimind4/everimind4.github.io/main/Sunrise_Bulb_Square.jpg" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+
+                
+                    <span class="emoji">🤔</span>
+                
+            </figure>
+        
+        <h1 class="site-name"><a href="https://everimind4.github.io/">Alan Choi</a></h1>
+        <h2 class="site-description">Linux Kernel, SSD, Operating System</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://everimind4.github.io/" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/%EC%A0%9C%EC%96%B4%EB%AC%B8-2/">
+                <img src="/p/%EC%A0%9C%EC%96%B4%EB%AC%B8-2/cover_hu0583afeab19a2de7dc49fcc1be6b44c7_761261_800x0_resize_box_2.png"
+                        srcset="/p/%EC%A0%9C%EC%96%B4%EB%AC%B8-2/cover_hu0583afeab19a2de7dc49fcc1be6b44c7_761261_800x0_resize_box_2.png 800w, /p/%EC%A0%9C%EC%96%B4%EB%AC%B8-2/cover_hu0583afeab19a2de7dc49fcc1be6b44c7_761261_1600x0_resize_box_2.png 1600w"
+                        width="800" 
+                        height="1098" 
+                        loading="lazy"
+                        alt="Featured image of post 제어문 (2)" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/pythongame/" style="background-color: #347ab4; color: #ffffff;">
+                PythonGame
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/p/%EC%A0%9C%EC%96%B4%EB%AC%B8-2/">제어문 (2)</a>
+    </h2>
+
+    
+    <h3 class="article-subtitle">
+        함수, 모듈
+    </h3>
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">Apr 26, 2021</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h2 id="5-함수">5. 함수</h2>
+<h4 id="정의">정의</h4>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="err">함수명</span><span class="p">(</span><span class="err">인수</span> <span class="mi">1</span><span class="p">,</span> <span class="err">인수</span> <span class="mi">2</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span> <span class="p">:</span>
+    <span class="err">명령</span> <span class="mi">1</span>
+    <span class="err">명령</span> <span class="mi">2</span>
+    <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
+    <span class="err">명령</span> <span class="n">n</span>
+    <span class="k">return</span> <span class="n">value</span>
+</code></pre></div><p>일부 요소들은 생략 가능하다.</p>
+<ul>
+<li>인수가 없다면 생략할 수 있다.</li>
+<li>반환값이 필요 없으면 return을 생략할 수 있다.</li>
+</ul>
+<h4 id="기본값-지정">기본값 지정</h4>
+<p>특정 인수에 기본값을 지정해줄 수도 있다. 매개변수 선언 시 <code>매개변수 = 기본값</code>의 형태로 작성한다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">plus</span><span class="p">(</span><span class="n">a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</code></pre></div><p>함수 호출 시 해당 매개변수의 입력을 생략하면 자동으로 기본값으로 설정된다.</p>
+<p>중요한 점은, <strong>기본값을 갖는 매개변수들은 무조건 뒤쪽에 배치</strong>되어야 한다.</p>
+<p><em>뇌피셜 : 기본값이 지정된 매개변수가 중간에 선언된 경우, 실제 함수 호출 시 입력되는 값들이 어떤 매개변수에 전달되어야 하는지를 명확하게 알 수 없는 문제가 발생하기 때문이 아닐까?</em></p>
+<p>즉, ① <code>def sum(a = 0, b)</code>는 불가능하고, ② <code>def sum(a, b = 0)</code>은 가능하다.  <code>sum(4)</code>를 실행하는 경우 ①번은 4라는 값이 a, b 중 어디에 전달되어야 하는지 명확하게 알 수 없기 때문이다.</p>
+<h4 id="람다-함수">람다 함수</h4>
+<p><code>def</code> 예약어를 사용한 함수 정의 외에도 간단하게 함수를 정의해서 사용하는 방법도 있다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="k">lambda</span> <span class="err">인수</span> <span class="mi">1</span><span class="p">,</span> <span class="err">인수</span> <span class="mi">2</span><span class="p">,</span> <span class="o">...</span> <span class="p">:</span> <span class="err">반환값</span>
+</code></pre></div><p>이름이 없으므로 직접적인 호출이 불가능하다. 따라서 변수에 대입하고 C의 함수 포인터처럼 사용할 수 있다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">plus</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">plus</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="mi">6</span>
+</code></pre></div><p>하지만 이렇게 사용하면 그냥 <code>def</code>와 별다른 차이가 없으므로, lambda 함수는 인자로 &lsquo;함수&rsquo;를 입력받는 함수들에 일회용으로 사용되곤 한다.</p>
+<h4 id="map">map()</h4>
+<p><code>map()</code>함수는 리스트나 튜플의 전체 요소에 대해 특정한 처리를 하고 싶을 때 사용한다.</p>
+<p><code>map(처리를 하는 함수, 처리 대상 리스트/튜플)</code>의 방식으로 사용한다.</p>
+<p><code>def</code>와 <code>lambda</code> 2가지를 사용하여 리스트의 값을 제곱하는 예시를 살펴보자.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">square</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">:</span>
+    	<span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">square</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+</code></pre></div><p><code>map()</code>함수는 <code>map</code> 객체를 반환하므로 <code>list()</code>함수를 사용하여 형변환을 해 줌으로써 결과로서 리스트를 얻는다.</p>
+<p>다음은 <code>lambda</code>를 사용한 경우이다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+</code></pre></div><p><code>map()</code> 함수 밖에서 사용하고자 하는 간단한 기능의 함수를 정의할 필요 없이, <code>map()</code> 함수 호출 시에 간단하게 원하는 기능을 함수로서 만들고자 할 때 <code>lambda</code> 함수를 사용할 수 있다.</p>
+<p>이처럼 <code>lambda</code> 함수를 사용해 인자로 함수를 입력받는 함수들의 종류는 매우 다양하다.</p>
+<h4 id="filter">filter()</h4>
+<p>조건에 맞는 요소만 추출하는 함수이다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span> <span class="p">:</span> <span class="n">a</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]))</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+</code></pre></div><h4 id="sorted">sorted()</h4>
+<p><code>sorted()</code>는 전달된 리스트를 직접 정렬하지 않고, 요소들이 정렬된 또 다른 리스트를 반환하는 함수이다.</p>
+<p><code>labmda</code> 함수를 인자로 전달해 <code>key = lambda . . .</code>형태로 정렬 기준을 지정해줄 수 있다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="nb">sorted</span><span class="p">([</span><span class="s2">&#34;watermelon&#34;</span><span class="p">,</span> <span class="s2">&#34;mango&#34;</span><span class="p">,</span> <span class="s2">&#34;grapefruit&#34;</span><span class="p">,</span> <span class="s2">&#34;banana&#34;</span><span class="p">])</span>
+<span class="p">[</span><span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;grapefruit&#39;</span><span class="p">,</span> <span class="s1">&#39;mango&#39;</span><span class="p">,</span> <span class="s1">&#39;watermelon&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">sorted</span><span class="p">([</span><span class="s2">&#34;watermelon&#34;</span><span class="p">,</span> <span class="s2">&#34;mango&#34;</span><span class="p">,</span> <span class="s2">&#34;grapefruit&#34;</span><span class="p">,</span> <span class="s2">&#34;banana&#34;</span><span class="p">],</span> <span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="p">[</span><span class="s1">&#39;mango&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;watermelon&#39;</span><span class="p">,</span> <span class="s1">&#39;grapefruit&#39;</span><span class="p">]</span>
+</code></pre></div><p>리스트 각 요소의 길이를 기준으로 정렬된 결과 리스트가 반환된 것을 볼 수 있다.</p>
+<p><code>reverse=True</code> 인자를 입력하는 경우 정렬 순서를 반대로 설정할 수 있다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="nb">sorted</span><span class="p">([</span><span class="s2">&#34;watermelon&#34;</span><span class="p">,</span> <span class="s2">&#34;mango&#34;</span><span class="p">,</span> <span class="s2">&#34;grapefruit&#34;</span><span class="p">,</span> <span class="s2">&#34;banana&#34;</span><span class="p">],</span> <span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">&#39;watermelon&#39;</span><span class="p">,</span> <span class="s1">&#39;grapefruit&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;mango&#39;</span><span class="p">]</span>
+</code></pre></div><p>튜플의 두 번째 요소를 기준으로 정렬하는 등의 활용도 가능하다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="nb">sorted</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)])</span>
+<span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span> <span class="o">//</span> <span class="mi">0</span> <span class="err">→</span> <span class="mi">3</span> <span class="err">→</span> <span class="mi">6</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">sorted</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span> <span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="p">[(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)]</span> <span class="o">//</span> <span class="mi">1</span> <span class="err">→</span> <span class="mi">2</span> <span class="err">→</span> <span class="mi">4</span>
+</code></pre></div><h4 id="리스트-내포-표기법-list-comprehension">리스트 내포 표기법 (List comprehension)</h4>
+<p>리스트에 저장할 요소의 규칙 등을 직관적으로 지정하여 리스트를 생성할 수 있다.</p>
+<p><code>[식 for 요소명 in 리스트]</code>의 형태로 사용한다. 예시를 살펴보자.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+<span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">]</span>
+</code></pre></div><ul>
+<li>이를 활용해 간단하게 2차원 배열을 만들 수도 있다.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="p">[[</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>
+<span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">]]</span>
+</code></pre></div><ul>
+<li>특정 값으로 초기화되는 다차원 리스트의 생성도 <code>range()</code>와 함께 활용하여 간단하게 해결할 수 있다.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
+<span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+</code></pre></div><ul>
+<li>바로 위의 예시에서는 <code>x</code>와 <code>y</code>가 큰 의미가 없지만, 이를 살짝 변형하여 1씩 증가하는 값을 저장할 수도 있다.</li>
+</ul>
+<p><code>y</code>를 통해 만든 4칸의 리스트의 각 요소에 <code>x</code>를 통해 만든 3칸의 리스트를 각각 넣고 있다. 따라서 <code>y</code> 순번에 3을 곱한 후, <code>x</code>의 순번을 더해 0부터 11까지 값이 차례대로 증가하는 다차원 리스트를 만들 수 있다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="p">[[</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">*</span> <span class="mi">3</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
+<span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">]]</span>
+</code></pre></div><ul>
+<li>이미 만들어진 2차원 배열에 접근하여 값을 변경하는 것도 가능하다.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">*</span> <span class="mi">3</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
+<span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">]]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[[</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">row</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="p">]</span>
+<span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">25</span><span class="p">],</span> <span class="p">[</span><span class="mi">36</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">64</span><span class="p">],</span> <span class="p">[</span><span class="mi">81</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">121</span><span class="p">]]</span>
+</code></pre></div><ul>
+<li>조건식을 추가하여 <code>filter()</code>처럼 사용할 수도 있다.</li>
+</ul>
+<p><code>[식 for 요소명 in 리스트 if 조건식]</code>의 형태로 사용한다. 조건을 충족한 요소에 대해서만 처음 식이 실행된다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span> <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+</code></pre></div><p><code>[0, 1, 2, 3, 4, 5]</code> 중에서 <code>x % 2 == 0</code>을 충족시키는 값만 <code>x</code>를 통해 리스트에 저장되는 것을 볼 수 있다.</p>
+<h2 id="6-모듈">6. 모듈</h2>
+<p>파이썬의 모듈은 C의 라이브러리와 같은 역할을 한다. 필요한 모든 함수나 자료구조를 전부 만들어 쓰는 것은 생산적이지 못하기 때문에, 기존에 정의된 모듈 혹은 사용자 정의 모듈을 가져와서(import) 사용할 수 있다.</p>
+<h4 id="임포트import">임포트(Import)</h4>
+<p>특정 모듈을 사용하려면 해당 모듈을 가져와야, 즉, 임포트(Import)해야 한다. 예를 들어, 난수를 생성하려면 random 모듈을 임포트(Import)해야 한다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">random</span>
+<span class="k">print</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+</code></pre></div><p>위 예시의 <code>randint()</code> 함수는 random 모듈을 임포트하지 않으면 사용할 수 없다.</p>
+<p>수많은 모듈과 각 모듈에 포함된 다양한 함수가 있지만, 이 단락에서 모두 소개하지 않겠고, 할 수도 없다. (그리고 뇌피셜이지만, <em>그때그때 필요하면 찾아보고 쓰는 게 코딩을 잘 하는 게 아닐까?</em>)</p>
+<h4 id="필요한-것만-임포트하기">필요한 것만 임포트하기</h4>
+<p>전체 모듈을 임포트하는 대신, 해당 모듈에서 필요한 함수만 임포트할 수도 있다.</p>
+<p><code>from 모듈명 import 함수명</code>의 형태로 임포트한다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
+<span class="k">print</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+</code></pre></div><p>당연하겠지만 이 경우 <code>randint()</code>를 제외한 random 모듈 내의 다른 함수들은 사용이 불가능하다.</p>
+<h4 id="__name__"><code>__name__</code></h4>
+<p>모듈은 누군가 작성한 파일을 내가 빌려 와서 사용하는 형태이다. 따라서 내가 작성한 파일도 모듈이 될 수 있다.</p>
+<p><code>__name__</code> 변수를 이용하면 어떤 파일이 실행될 때 내가 임포트를 했는지, 아니면 임포트를 당했는지를 알 수 있다.</p>
+<p><code>__name__</code> 변수는 다음 값을 갖는다.</p>
+<ul>
+<li>프로그램이 시작된 파일에서는 <code>__name__</code> 변수의 값이 <code>__main__</code>으로 설정된다.</li>
+<li>모듈로서 임포트된 파일에서는 <code>__name__</code>변수의 값이 해당 모듈명으로 설정된다.</li>
+</ul>
+<p>따라서 모듈로서 호출된 경우를 구분하기 위해 주로 다음과 같은 형식의 코드를 주로 사용한다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="o">...</span>
+<span class="err">초기화</span> <span class="err">코드</span>
+<span class="err">함수</span> <span class="err">및</span> <span class="err">클래스</span> <span class="err">정의</span><span class="p">,</span> <span class="err">전역</span> <span class="err">변수</span> <span class="err">선언</span> <span class="err">등</span>
+<span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span> <span class="p">:</span>
+    <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
+</code></pre></div><p><code>__name__</code>변수에 저장된 값이 <code>__main__</code>인 경우 해당 파일에서 프로그램이 시작된 것이므로 특별한 기능을 수행하도록 설정할 수 있다.</p>
+<p>여기까지 함수와, 함수를 모아 둔 파일인 모듈을 살펴보았다.</p>
+<p>앞서 언급했든 모듈엔 수많은 종류가 있으므로, 추후 다른 내용을 학습하며 새로운 모듈이 나오면 그 때 해당 모듈에 포함된 함수들을 살펴보도록 하겠다.</p>
+<p>다음 글에서는 게임 개발에 필요한 PyGame 모듈에 대해 다뤄볼 예정이다.</p>
+<p>(다음 글에서 계속됩니다.)</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/python/">Python</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="has-image">
+    <a href="/p/%EC%A0%9C%EC%96%B4%EB%AC%B8-1/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%EC%A0%9C%EC%96%B4%EB%AC%B8-1/cover.abc64792fe4bfff8f521263d607e04b4_hu0583afeab19a2de7dc49fcc1be6b44c7_761261_250x150_fill_box_smart1_2.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="" 
+                        data-hash="md5-q8ZHkv5L//j1ISY9YH4EtA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">제어문 (1)</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/p/%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%98%95%EA%B3%BC-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B5%AC%EC%A1%B0-3/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%98%95%EA%B3%BC-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B5%AC%EC%A1%B0-3/cover.abc64792fe4bfff8f521263d607e04b4_hu0583afeab19a2de7dc49fcc1be6b44c7_761261_250x150_fill_box_smart1_2.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="" 
+                        data-hash="md5-q8ZHkv5L//j1ISY9YH4EtA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">데이터형과 데이터 구조 (3)</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/p/%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%98%95%EA%B3%BC-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B5%AC%EC%A1%B0-2/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%98%95%EA%B3%BC-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B5%AC%EC%A1%B0-2/cover.abc64792fe4bfff8f521263d607e04b4_hu0583afeab19a2de7dc49fcc1be6b44c7_761261_250x150_fill_box_smart1_2.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="" 
+                        data-hash="md5-q8ZHkv5L//j1ISY9YH4EtA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">데이터형과 데이터 구조 (2)</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/p/%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%98%95%EA%B3%BC-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B5%AC%EC%A1%B0-1/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%98%95%EA%B3%BC-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B5%AC%EC%A1%B0-1/cover.abc64792fe4bfff8f521263d607e04b4_hu0583afeab19a2de7dc49fcc1be6b44c7_761261_250x150_fill_box_smart1_2.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="" 
+                        data-hash="md5-q8ZHkv5L//j1ISY9YH4EtA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">데이터형과 데이터 구조 (1)</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/p/%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/cover.abc64792fe4bfff8f521263d607e04b4_hu0583afeab19a2de7dc49fcc1be6b44c7_761261_250x150_fill_box_smart1_2.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="" 
+                        data-hash="md5-q8ZHkv5L//j1ISY9YH4EtA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">시작하기</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "everimind4-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (DISQUS) {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2021 Alan Choi
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.3.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

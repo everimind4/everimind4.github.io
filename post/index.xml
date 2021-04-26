@@ -6,7 +6,18 @@
     <description>Recent content in Posts on Alan Choi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 17 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://everimind4.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 26 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://everimind4.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>제어문 (2)</title>
+      <link>https://everimind4.github.io/p/%EC%A0%9C%EC%96%B4%EB%AC%B8-2/</link>
+      <pubDate>Mon, 26 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://everimind4.github.io/p/%EC%A0%9C%EC%96%B4%EB%AC%B8-2/</guid>
+      <description>5. 함수 정의 def 함수명(인수 1, 인수 2, ...) : 명령 1 명령 2 . . . 명령 n return value 일부 요소들은 생략 가능하다.
+ 인수가 없다면 생략할 수 있다. 반환값이 필요 없으면 return을 생략할 수 있다.  기본값 지정 특정 인수에 기본값을 지정해줄 수도 있다. 매개변수 선언 시 매개변수 = 기본값의 형태로 작성한다.
+def plus(a = 0, b = 0) : return a + b 함수 호출 시 해당 매개변수의 입력을 생략하면 자동으로 기본값으로 설정된다.</description>
+    </item>
+    
     <item>
       <title>프로세스 (1)</title>
       <link>https://everimind4.github.io/p/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-1/</link>
