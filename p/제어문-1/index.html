@@ -457,6 +457,7 @@ if (!doNotTrack) {
     <span class="err">명령</span><span class="mi">2</span>
     <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
 </code></pre></div><p>즉, <code>in</code>뒤의 데이터형에서 요소를 하나씩 꺼내어(문자열의 경우 문자를 하나씩) 변수에 넣고, 명령을 처리한다.</p>
+<p>이렇게 특정 요소에 차례대로 접근 가능한 대상을 <strong>이터러블(Iterable) 객체</strong>라고 부른다.</p>
 <p>복잡한 응용도 가능하다. 변수 위치에 꼭 단일 변수만 와야 하는 것은 아니고, 특정 자료형도 위치할 수 있다.</p>
 <div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">for</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)]:</span>
     <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
@@ -473,7 +474,7 @@ if (!doNotTrack) {
 <span class="nb">next</span>
 </code></pre></div><p>오른쪽 2차원 리스트의 각 요소인 튜플이 자동으로 왼쪽 튜플의 요소에 언팩되어 들어간다.</p>
 <h4 id="for--range">for ~ range()</h4>
-<p>기존의 C에서처럼 숫자를 증가시키는 반복문 형태도 있다. <strong><code>range()</code>함수와 함께 사용</strong>한다.</p>
+<p>기존의 C에서처럼 숫자를 증가시키는 반복문 형태도 있다. <strong><code>range()</code>함수와 함께 사용</strong>한다. <code>range()</code> 함수는 번호가 들어 있는 이터러블 객체를 반환하는 함수이다.</p>
 <p><code>range(숫자)</code>는 0에서부터 (해당 숫자-1)까지의 정수들을 요소로 하는 리스트(튜플)처럼 사용할 수 있다.</p>
 <p><code>range()</code>의 인수는 1개부터 3개까지 입력 가능한데, 각각 다음 의미를 갖는다.</p>
 <table>
@@ -511,19 +512,19 @@ if (!doNotTrack) {
 <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 </code></pre></div><p>각 경우를 직접 출력해보면 다음과 같은 결과를 볼 수 있다.</p>
 <div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    	<span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 <span class="mi">0</span>
 <span class="mi">1</span>
 <span class="mi">2</span>
 <span class="mi">3</span>
 </code></pre></div><div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+    	<span class="k">print</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
 <span class="mi">2</span>
 <span class="mi">3</span>
 <span class="mi">4</span>
 <span class="mi">5</span>
 </code></pre></div><div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+    	<span class="k">print</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
 <span class="mi">5</span>
 <span class="mi">8</span>
 <span class="mi">11</span>
