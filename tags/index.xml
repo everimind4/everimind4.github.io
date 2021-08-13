@@ -6,20 +6,11 @@
     <description>Recent content in Tags on Alan Choi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 26 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://everimind4.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Python</title>
-      <link>https://everimind4.github.io/tags/python/</link>
-      <pubDate>Mon, 26 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://everimind4.github.io/tags/python/</guid>
-      <description></description>
-    </item>
-    
+    <lastBuildDate>Fri, 13 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://everimind4.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Process</title>
       <link>https://everimind4.github.io/tags/process/</link>
-      <pubDate>Sat, 17 Apr 2021 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 13 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://everimind4.github.io/tags/process/</guid>
       <description></description>
@@ -28,9 +19,18 @@
     <item>
       <title>Virtualization</title>
       <link>https://everimind4.github.io/tags/virtualization/</link>
-      <pubDate>Sat, 17 Apr 2021 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 13 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://everimind4.github.io/tags/virtualization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>https://everimind4.github.io/tags/python/</link>
+      <pubDate>Mon, 26 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://everimind4.github.io/tags/python/</guid>
       <description></description>
     </item>
     
