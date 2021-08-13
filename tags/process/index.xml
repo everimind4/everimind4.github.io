@@ -8,11 +8,11 @@
     <language>en-us</language>
     <lastBuildDate>Fri, 13 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://everimind4.github.io/tags/process/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Limited Direct Execution</title>
-      <link>https://everimind4.github.io/p/limited-direct-execution/</link>
+      <title>Virtualization Mechanism</title>
+      <link>https://everimind4.github.io/p/virtualization-mechanism/</link>
       <pubDate>Fri, 13 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://everimind4.github.io/p/limited-direct-execution/</guid>
+      <guid>https://everimind4.github.io/p/virtualization-mechanism/</guid>
       <description>Virtualization Mechanism 저번까지 다룬 CPU 가상화의 핵심은 Time Sharing이다.
 Time Sharing은 여러 개의 프로세스가 CPU의 시간을 나누어 쓰는 기법을 말한다.
 그렇다면 이러한 Time Sharing을 실제로 어떤 메커니즘으로 구현할 수 있을까? 지금부터는 이를 어떻게 구현했는지 살펴본다.
